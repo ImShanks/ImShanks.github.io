@@ -16,21 +16,24 @@
   <meta name="author" content="xwzhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="一、数据结构1.1 概念数据结构，就是一种程序设计优化的方法论，研究数据的、逻辑结构、和物理结构以及它们之间相互关系并对这种结构定义相应的“运算，目的是加快程序的执行速度、减少内存占用的空间。 1.2研究对象之一：数据间逻辑关系 集合结构 线性结构:一对一关系 树形结构:一对多关系 图形结构:多对多关系  1.3 研究对象之二：数据的存储结构 数组结构 链式结构 索引结构 散列结构  1.3 研究">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2023/10/28/hello-world/index.html">
+<meta property="og:title" content="Java进阶-数据结构和集合源码">
+<meta property="og:url" content="http://example.com/2023/10/28/Java%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/index.html">
 <meta property="og:site_name" content="xwzhang&#39;s BLOG">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="一、数据结构1.1 概念数据结构，就是一种程序设计优化的方法论，研究数据的、逻辑结构、和物理结构以及它们之间相互关系并对这种结构定义相应的“运算，目的是加快程序的执行速度、减少内存占用的空间。 1.2研究对象之一：数据间逻辑关系 集合结构 线性结构:一对一关系 树形结构:一对多关系 图形结构:多对多关系  1.3 研究对象之二：数据的存储结构 数组结构 链式结构 索引结构 散列结构  1.3 研究">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-28T06:22:40.308Z">
-<meta property="article:modified_time" content="2023-10-28T04:52:19.150Z">
+<meta property="article:published_time" content="2023-10-28T11:16:31.000Z">
+<meta property="article:modified_time" content="2023-10-28T11:49:32.875Z">
 <meta property="article:author" content="xwzhang">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="集合源码">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - xwzhang&#39;s BLOG</title>
+  <title>Java进阶-数据结构和集合源码 - xwzhang&#39;s BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -223,7 +226,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="Java进阶-数据结构和集合源码"></span>
           
         </div>
 
@@ -234,8 +237,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-28 14:22" pubdate>
-          2023年10月28日 下午
+        <time datetime="2023-10-28 19:16" pubdate>
+          2023年10月28日 晚上
         </time>
       </span>
     
@@ -246,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          225 字
         
       </span>
     
@@ -257,7 +260,7 @@
         
         
         
-          4 分钟
+          2 分钟
         
       </span>
     
@@ -294,25 +297,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">Java进阶-数据结构和集合源码</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+                <h2 id="一、数据结构"><a href="#一、数据结构" class="headerlink" title="一、数据结构"></a>一、数据结构</h2><h3 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h3><p>数据结构，就是一种程序设计优化的方法论，研究数据的、逻辑结构、和物理结构以及它们之间相互关系并对这种结构定义相应的“运算，目的是加快程序的执行速度、减少内存占用的空间。</p>
+<h3 id="1-2研究对象之一：数据间逻辑关系"><a href="#1-2研究对象之一：数据间逻辑关系" class="headerlink" title="1.2研究对象之一：数据间逻辑关系"></a>1.2研究对象之一：数据间逻辑关系</h3><ul>
+<li>集合结构</li>
+<li>线性结构:一对一关系</li>
+<li>树形结构:一对多关系</li>
+<li>图形结构:多对多关系</li>
+</ul>
+<h3 id="1-3-研究对象之二：数据的存储结构"><a href="#1-3-研究对象之二：数据的存储结构" class="headerlink" title="1.3 研究对象之二：数据的存储结构"></a>1.3 研究对象之二：数据的存储结构</h3><ul>
+<li>数组结构</li>
+<li>链式结构</li>
+<li>索引结构</li>
+<li>散列结构</li>
+</ul>
+<h3 id="1-3-研究对象之三：运算结构"><a href="#1-3-研究对象之三：运算结构" class="headerlink" title="1.3 研究对象之三：运算结构"></a>1.3 研究对象之三：运算结构</h3><h2 id="二、常见的存储结构"><a href="#二、常见的存储结构" class="headerlink" title="二、常见的存储结构"></a>二、常见的存储结构</h2><h3 id="2-1-数组"><a href="#2-1-数组" class="headerlink" title="2.1  数组"></a>2.1  数组</h3><h3 id="2-2-链表"><a href="#2-2-链表" class="headerlink" title="2.2 链表"></a>2.2 链表</h3><h3 id="2-3-树"><a href="#2-3-树" class="headerlink" title="2.3 树"></a>2.3 树</h3><h3 id="2-4-栈"><a href="#2-4-栈" class="headerlink" title="2.4 栈"></a>2.4 栈</h3><h3 id="2-5队列"><a href="#2-5队列" class="headerlink" title="2.5队列"></a>2.5队列</h3>
                 
               </div>
             
@@ -320,6 +323,38 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java%E8%BF%9B%E9%98%B6/" class="category-chain-item">Java进阶</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="print-no-link">#数据结构</a>
+      
+        <a href="/tags/%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/" class="print-no-link">#集合源码</a>
+      
+    </div>
   
 </div>
 
@@ -329,8 +364,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2023/10/28/hello-world/</div>
+      <div>Java进阶-数据结构和集合源码</div>
+      <div>http://example.com/2023/10/28/Java进阶-数据结构和集合源码/</div>
     </div>
     <div class="license-meta">
       
@@ -374,15 +409,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/28/%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%EF%BC%8C%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%EF%BC%8C%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E5%8C%BA%E5%88%AB/" title="缓存穿透，缓存击穿，缓存雪崩区别">
+                      <a href="/2023/10/28/MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87/" title="MySQL-基础篇">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">缓存穿透，缓存击穿，缓存雪崩区别</span>
+                        <span class="hidden-mobile">MySQL-基础篇</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2023/10/28/tianji/" title="天机学堂-基础环境搭建">
+                        <span class="hidden-mobile">天机学堂-基础环境搭建</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
