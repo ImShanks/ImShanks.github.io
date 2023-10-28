@@ -16,25 +16,24 @@
   <meta name="author" content="xwzhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.事务的四大特性 原子性 (Atomicity): 事务是不可分割的最小操作单元，要么全部成功，要么全部失败。 一致性 (Consistency) : 事务完成时，必须使所有的数据都保持一致状态。 隔离性(lsolation):数据库系统提供的隔离机制，保证事务在不受外部并发操作影响的独立环境下运行。 持久性(Durability): 事务一旦提交或回滚，它对数据库中的数据的改变就是永久的。">
+    <meta name="description" content="一.MyISAM和InnoDB区别 InnoDB 支持行级别的锁粒度，MyISAM 不支持，只支持表级别的锁粒度。  MyISAM 不提供事务支持。InnoDB 提供事务支持，实现了 SQL 标准定义了四个隔离级别。  MyISAM 不支持外键，而 InnoDB 支持。  MyISAM 不支持 MVCC，而 InnoDB 支持。  虽然 MyISAM 引擎和 InnoDB 引擎都是使用 B+Tre">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL-基础篇">
-<meta property="og:url" content="http://example.com/2023/10/28/MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87/index.html">
+<meta property="og:title" content="MySQL-进阶篇">
+<meta property="og:url" content="http://example.com/2023/10/28/MySQL-%E8%BF%9B%E9%98%B6%E7%AF%87/index.html">
 <meta property="og:site_name" content="xwzhang&#39;s BLOG">
-<meta property="og:description" content="1.事务的四大特性 原子性 (Atomicity): 事务是不可分割的最小操作单元，要么全部成功，要么全部失败。 一致性 (Consistency) : 事务完成时，必须使所有的数据都保持一致状态。 隔离性(lsolation):数据库系统提供的隔离机制，保证事务在不受外部并发操作影响的独立环境下运行。 持久性(Durability): 事务一旦提交或回滚，它对数据库中的数据的改变就是永久的。">
+<meta property="og:description" content="一.MyISAM和InnoDB区别 InnoDB 支持行级别的锁粒度，MyISAM 不支持，只支持表级别的锁粒度。  MyISAM 不提供事务支持。InnoDB 提供事务支持，实现了 SQL 标准定义了四个隔离级别。  MyISAM 不支持外键，而 InnoDB 支持。  MyISAM 不支持 MVCC，而 InnoDB 支持。  虽然 MyISAM 引擎和 InnoDB 引擎都是使用 B+Tre">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/10/28/MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230921162142.png">
-<meta property="article:published_time" content="2023-10-28T11:50:39.000Z">
-<meta property="article:modified_time" content="2023-10-28T11:52:18.845Z">
+<meta property="og:image" content="http://example.com/2023/10/28/MySQL-%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230922210947.png">
+<meta property="article:published_time" content="2023-10-28T11:53:11.000Z">
+<meta property="article:modified_time" content="2023-10-28T11:54:17.397Z">
 <meta property="article:author" content="xwzhang">
 <meta property="article:tag" content="MySQL">
-<meta property="article:tag" content="基础篇">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/10/28/MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230921162142.png">
+<meta name="twitter:image" content="http://example.com/2023/10/28/MySQL-%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230922210947.png">
   
   
   
-  <title>MySQL-基础篇 - xwzhang&#39;s BLOG</title>
+  <title>MySQL-进阶篇 - xwzhang&#39;s BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +226,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="MySQL-基础篇"></span>
+            <span id="subtitle" data-typed-text="MySQL-进阶篇"></span>
           
         </div>
 
@@ -238,7 +237,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-28 19:50" pubdate>
+        <time datetime="2023-10-28 19:53" pubdate>
           2023年10月28日 晚上
         </time>
       </span>
@@ -250,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          2.8k 字
         
       </span>
     
@@ -261,7 +260,7 @@
         
         
         
-          12 分钟
+          24 分钟
         
       </span>
     
@@ -298,71 +297,97 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">MySQL-基础篇</h1>
+            <h1 id="seo-header">MySQL-进阶篇</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="1-事务的四大特性"><a href="#1-事务的四大特性" class="headerlink" title="1.事务的四大特性"></a>1.事务的四大特性</h3><ul>
-<li>原子性 (Atomicity): 事务是不可分割的最小操作单元，要么全部成功，要么全部失败。</li>
-<li>一致性 (Consistency) : 事务完成时，必须使所有的数据都保持一致状态。</li>
-<li>隔离性(lsolation):数据库系统提供的隔离机制，保证事务在不受外部并发操作影响的独立环境下运行。</li>
-<li>持久性(Durability): 事务一旦提交或回滚，它对数据库中的数据的改变就是永久的。</li>
-</ul>
-<h3 id="2-并发事务问题"><a href="#2-并发事务问题" class="headerlink" title="2.并发事务问题"></a>2.并发事务问题</h3><ul>
-<li>脏读（Dirty Read）：<ul>
-<li>脏读是指一个事务读取了另一个事务尚未提交的数据。</li>
-<li>想象一家银行，某人正在进行取款操作，但还没有完成整个事务。同时，另一个人查看了该账户余额，看到了取款事务中的临时减少，尽管最终可能会被取消。这个过程就像读取了“脏数据”，因为它可能是不准确的。</li>
-</ul>
+                <h3 id="一-MyISAM和InnoDB区别"><a href="#一-MyISAM和InnoDB区别" class="headerlink" title="一.MyISAM和InnoDB区别"></a>一.MyISAM和InnoDB区别</h3><ul>
+<li><p>InnoDB 支持行级别的锁粒度，MyISAM 不支持，只支持表级别的锁粒度。</p>
 </li>
-<li>幻读（Phantom Read）：<ul>
-<li>幻读是指一个事务在两次查询之间，另一个事务插入了新的数据行，导致第一个事务看到了一个似乎出现了“幻影”数据的情况。</li>
-<li>假设一个医院管理系统中有一个正在查看某个科室的病人数量的事务。当事务开始时，有10名患者，但在事务期间，另一个事务添加了一名新患者，导致第一个事务看到了11名患者，就好像出现了“幻影”患者一样。</li>
-<li>假如另一个事务在id&#x3D;3的地方插入数据，然后我当前事务，就是我查的时候显示id&#x3D;3明明没有数据，插入的时候却显示已经存在</li>
-</ul>
+<li><p>MyISAM 不提供事务支持。InnoDB 提供事务支持，实现了 SQL 标准定义了四个隔离级别。</p>
 </li>
-<li>不可重复读（Non-repeatable Read）：<ul>
-<li>不可重复读是指在同一个事务中，两次读取相同数据时，第二次读取得到的数据与第一次读取不同，这是由于其他事务修改了数据。</li>
-<li>假设一个网上商店的顾客正在查看购物车中的商品数量。当他第一次查看时，有5件商品。然后，在他下订单之前，另一个顾客购买了2件相同的商品，导致他第二次查看购物车时，商品数量变成了3件。这就是不可重复读，因为同一事务中的两次读取返回了不同的结果。</li>
-</ul>
+<li><p>MyISAM 不支持外键，而 InnoDB 支持。</p>
+</li>
+<li><p>MyISAM 不支持 MVCC，而 InnoDB 支持。</p>
+</li>
+<li><p>虽然 MyISAM 引擎和 InnoDB 引擎都是使用 B+Tree 作为索引结构，但是两者的实现方式不太一样。</p>
+</li>
+<li><p>MyISAM 不支持数据库异常崩溃后的安全恢复，而 InnoDB 支持。</p>
+</li>
+<li><p>InnoDB 的性能比 MyISAM 更强大。</p>
+</li>
+<li><p><strong>lnnoDB</strong>:是Mysal的默认存储引擎，支持事务、外键。如果应用对事务的完整性有比较高的要求，在并发条件下要求数据的一致性，数据操作除了插入和查询之外，还包含很多的更新、删除操作，那么InnoDB存储引擎是比较合适的选择。</p>
+</li>
+<li><p><strong>MyISAM</strong>:如果应用是以读操作和插入操作为主，只有很少的更新和删除操作，并且对事务的完整性、并发性要求不是很高，那么选择这个存储引擎是非常合适的。    MyISAM目前有替换品MongoDB</p>
+</li>
+<li><p><strong>MEMORY</strong>:将所有数据保存在内存中，访问速度快，通常用于临时表及缓存。MEMORY的缺陷就是对表的大小有限制，太大的表无法缓存在内存中，而且无法保障数据的安全性。   MEMORY目前也有替换品那就是Redis</p>
 </li>
 </ul>
-<h5 id="幻读和不可重复读的区别"><a href="#幻读和不可重复读的区别" class="headerlink" title="幻读和不可重复读的区别"></a>幻读和不可重复读的区别</h5><ol>
-<li>幻读（Phantom Read）：<ul>
-<li>幻读通常与数据行的插入或删除操作有关。它发生在一个事务在两次查询之间，另一个事务插入了新的数据行，导致第一个事务看到了一个似乎出现了“幻影”数据的情况。</li>
-<li>幻读强调的是在事务期间其他事务添加或删除了数据，从而导致看到不一致的结果。</li>
+<h3 id="二-索引"><a href="#二-索引" class="headerlink" title="二.索引"></a>二.索引</h3><h4 id="1：索引的概念"><a href="#1：索引的概念" class="headerlink" title="1：索引的概念"></a>1：索引的概念</h4><p>索引(index)是帮助MySQL高效获取数据的数据结构(有序。在数据之外，数据库系统还维护着满足特定查找算法的数据结构，这些数据结构以某种方式引用(指向)数据， 这样就可以在这些数据结构上实现高级查找算法，这种数据结构就是索引。</p>
+<ul>
+<li>索引会占据磁盘空间，索引可以提高查询效率，但是会降低更新数据的效率</li>
 </ul>
-</li>
-<li>不可重复读（Non-repeatable Read）：<ul>
-<li>不可重复读通常与数据行的更新操作有关。它发生在一个事务在两次查询之间，另一个事务修改了已经存在的数据行，导致第一个事务在两次读取之间看到不同的数据。</li>
-<li>不可重复读强调的是在事务期间其他事务修改了数据，导致读取到的数据不一致。</li>
+<h4 id="2：索引的结构"><a href="#2：索引的结构" class="headerlink" title="2：索引的结构"></a>2：索引的结构</h4><p>按照数据结构维度划分：</p>
+<ul>
+<li>B+Tree 索引：MySQL 里默认和最常用的索引类型。只有叶子节点存储 value，非叶子节点只有指针和 key。存储引擎 MyISAM 和 InnoDB 实现 BTree 索引都是使用 B+Tree，但二者实现方式不一样（前面已经介绍了）。</li>
+<li>哈希索引：类似键值对的形式，一次即可定位。</li>
+<li>R-Tree 索引（空间索引）：一般不会使用，仅支持 geometry 数据类型，优势在于范围查找，效率较低，通常使用搜索引擎如 ElasticSearch 代替。</li>
+<li>全文索引：对文本的内容进行分词，进行搜索。目前只有 CHAR、VARCHAR ，TEXT 列上可以创建全文索引。一般不会使用，效率较低，通常使用搜索引擎如 ElasticSearch 代替。</li>
 </ul>
-</li>
+<p>按照底层存储方式角度划分：</p>
+<ul>
+<li>聚簇索引（聚集索引）：索引结构和数据一起存放的索引，InnoDB 中的主键索引就属于聚簇索引。  <strong>聚集索引指向的是数据</strong></li>
+<li>非聚簇索引（非聚集索引）：索引结构和数据分开存放的索引，二级索引(辅助索引)就属于非聚簇索引。MySQL 的 MyISAM 引擎，不管主键还是非主键，使用的都是非聚簇索引。  <strong>二级索引指向的是索引</strong></li>
+</ul>
+<p>按照应用维度划分：</p>
+<ul>
+<li>主键索引：加速查询 + 列值唯一（不可以有 NULL）+ 表中只有一个。</li>
+<li>普通索引：仅加速查询。</li>
+<li>唯一索引：加速查询 + 列值唯一（可以有 NULL）。</li>
+<li>覆盖索引：一个索引包含（或者说覆盖）所有需要查询的字段的值。</li>
+<li>联合索引：多列值组成一个索引，专门用于组合搜索，其效率大于索引合并。</li>
+<li>全文索引：对文本的内容进行分词，进行搜索。目前只有 <code>CHAR</code>、<code>VARCHAR</code> ，<code>TEXT</code> 列上可以创建全文索引。一般不会使用，效率较低，通常使用搜索引擎如 ElasticSearch 代替。</li>
+</ul>
+<p><img src="/2023/10/28/MySQL-%E8%BF%9B%E9%98%B6%E7%AF%87/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230922210947.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3-InnoDB的默认索引结构是什么？（面试问过）"><a href="#3-InnoDB的默认索引结构是什么？（面试问过）" class="headerlink" title="3.InnoDB的默认索引结构是什么？（面试问过）"></a>3.InnoDB的默认索引结构是什么？（面试问过）</h4><p>InnoDB 存储引擎的默认索引结构是B+树（B-tree），它用于加速数据库表的查询操作。这种索引结构支持高效的数据插入、删除和查找操作，是MySQL中常用的索引类型之一。</p>
+<p>为什么不用B树要用B+树？</p>
+<ul>
+<li><strong>更适合范围查询</strong>：B+树的叶子节点都连接成一个有序链表，这使得范围查询非常高效，因为数据在物理存储上是有序的。而B树在范围查询时可能需要进行额外的跳跃操作，效率较低。</li>
+<li><strong>更好的磁盘IO性能</strong>：B+树的树高相对较低，因此在进行插入和删除操作时需要更少的磁盘IO。B树在树高相对较高时可能需要更多的IO操作，这会降低性能。</li>
+<li><strong>更好的顺序访问性能</strong>：由于B+树的叶子节点形成有序链表，顺序访问数据更加高效。这对于某些查询和扫描操作非常重要。</li>
+<li><strong>索引占用更少的内存</strong>：B+树的内部节点不保存数据记录的引用，只保存键值和子节点的信息，因此相比于B树，B+树索引占用更少的内存。</li>
+</ul>
+<h3 id="三-索引失效的情况"><a href="#三-索引失效的情况" class="headerlink" title="三.索引失效的情况"></a>三.索引失效的情况</h3><ol>
+<li><strong>未使用索引列</strong>：当查询中的条件不是索引列时，索引将失效。例如，如果你有一个名为”age”的索引，但查询是基于名字而不是年龄的，索引将无效。</li>
+<li><strong>使用函数或表达式</strong>：如果在查询中对列使用函数、表达式或计算，索引可能会失效。例如，<code>WHERE YEAR(date_column) = 2023</code> 可能导致索引失效，因为它对日期列进行了函数计算。</li>
+<li><strong>模糊查询</strong>：模糊查询（如使用通配符%）通常会导致索引失效，因为数据库无法有效地利用索引来匹配通配符的位置。</li>
+<li><strong>不等于条件</strong>：在某些情况下，使用不等于条件（例如，<code>!=</code> 或 <code>&lt;&gt;</code>）可能导致索引失效，因为它们不是等值条件。</li>
+<li><strong>OR条件</strong>：包含多个OR条件的查询可能会导致索引失效，特别是这些条件没有被合理地组织。</li>
+<li><strong>列顺序</strong>：索引的列顺序也很重要。如果查询的列顺序与索引的列顺序不匹配，索引可能会失效。</li>
+<li><strong>大数据范围查询</strong>：在大数据表上执行范围查询（例如，大于、小于、介于等）可能会导致索引失效，因为数据库可能需要扫描大量的索引页。</li>
 </ol>
-<h3 id="3-事务隔离级别"><a href="#3-事务隔离级别" class="headerlink" title="3.事务隔离级别"></a>3.事务隔离级别</h3><p><img src="/2023/10/28/MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230921162142.png" srcset="/img/loading.gif" lazyload></p>
-<ol>
-<li>读未提交（Read Uncommitted）：<ul>
-<li>最低的隔离级别，允许一个事务读取另一个事务未提交的数据。</li>
-<li>可能出现脏读、幻读和不可重复读等问题。</li>
+<p>解决索引失效的方法包括：</p>
+<ul>
+<li>确保查询中使用了适当的索引列，并避免在索引列上使用函数或表达式。</li>
+<li>优化查询语句，尽量避免模糊查询和OR条件。</li>
+<li>确保索引的列顺序与查询中的列顺序匹配。</li>
+<li>使用合适的索引类型（例如，B-tree、Hash、Full-text等），取决于查询的需求。</li>
+<li>定期重新评估数据库的索引策略，根据实际查询模式进行调整</li>
 </ul>
-</li>
-<li>读已提交（Read Committed）：<ul>
-<li>允许一个事务只能读取已提交的数据，确保不会读取到未提交的数据。</li>
-<li>虽然可以避免脏读，但仍然可能发生幻读和不可重复读。</li>
+<h3 id="四-主键优化"><a href="#四-主键优化" class="headerlink" title="四.主键优化"></a>四.主键优化</h3><h4 id="1-数据组织方式"><a href="#1-数据组织方式" class="headerlink" title="1.数据组织方式"></a>1.数据组织方式</h4><p>在innoDB存储引擎中，表数据都是根据主键顺序组织存放的，这种存储方式的表称为索引组织表(index organized table IOT）。</p>
+<h4 id="2-页分裂"><a href="#2-页分裂" class="headerlink" title="2.页分裂"></a>2.页分裂</h4><p>页可以为空，也可以填充一半，也可以填充100%。每个页包含了2-N行数据(如果一行数据多大，会行溢出)，根据主键排列。</p>
+<h4 id="3-页合并"><a href="#3-页合并" class="headerlink" title="3.页合并"></a>3.页合并</h4><ul>
+<li>当删除一行记录时，实际上记录并没有被物理删除，只是记录被标记(flaged)为删除并且它的空间变得允许被其他记录声明使用。</li>
+<li>当页中删除的记录达到 MERGE THRESHOLD(默认为页的50%)，nnoDB会开始寻找最靠近的页(前或后)看看是否可以将两个页合并以优化空间使用。</li>
 </ul>
-</li>
-<li>可重复读（Repeatable Read）：<ul>
-<li>事务内的多次读取都会看到相同的数据快照，即使其他事务修改了数据也不会影响。</li>
-<li>可以避免脏读和不可重复读，但仍然可能发生幻读。</li>
+<h4 id="4-主键设计原则"><a href="#4-主键设计原则" class="headerlink" title="4.主键设计原则"></a>4.主键设计原则</h4><ul>
+<li>满足业务需求的情况下，尽量降低主键的长度</li>
+<li>插入数据时，尽量选择顺序插入，选择使用AUTO_INCREMENT自增主键</li>
+<li>尽量不要使用UUID做主键或者是其他自然主键，如身份证号</li>
+<li>业务操作时，避免对主键的修改。</li>
 </ul>
-</li>
-<li>序列化（Serializable）：<ul>
-<li>最高的隔离级别，确保事务之间没有并发问题，所有事务顺序执行。</li>
-<li>可以避免脏读、幻读和不可重复读，但可能会影响性能。</li>
-</ul>
-</li>
-</ol>
-
+<h3 id="五、order-by优化"><a href="#五、order-by优化" class="headerlink" title="五、order by优化"></a>五、order by优化</h3>
                 
               </div>
             
@@ -397,8 +422,6 @@
       
         <a href="/tags/MySQL/" class="print-no-link">#MySQL</a>
       
-        <a href="/tags/%E5%9F%BA%E7%A1%80%E7%AF%87/" class="print-no-link">#基础篇</a>
-      
     </div>
   
 </div>
@@ -409,8 +432,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>MySQL-基础篇</div>
-      <div>http://example.com/2023/10/28/MySQL-基础篇/</div>
+      <div>MySQL-进阶篇</div>
+      <div>http://example.com/2023/10/28/MySQL-进阶篇/</div>
     </div>
     <div class="license-meta">
       
@@ -454,18 +477,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/28/MySQL-%E8%BF%9B%E9%98%B6%E7%AF%87/" title="MySQL-进阶篇">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MySQL-进阶篇</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/28/Java%E8%BF%9B%E9%98%B6-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E9%9B%86%E5%90%88%E6%BA%90%E7%A0%81/" title="Java进阶-数据结构和集合源码">
-                        <span class="hidden-mobile">Java进阶-数据结构和集合源码</span>
+                      <a href="/2023/10/28/MySQL-%E5%9F%BA%E7%A1%80%E7%AF%87/" title="MySQL-基础篇">
+                        <span class="hidden-mobile">MySQL-基础篇</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
