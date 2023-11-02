@@ -24,7 +24,7 @@
 <meta property="og:description" content="一、数据结构1.1 概念数据结构，就是一种程序设计优化的方法论，研究数据的、逻辑结构、和物理结构以及它们之间相互关系并对这种结构定义相应的“运算，目的是加快程序的执行速度、减少内存占用的空间。 1.2研究对象之一：数据间逻辑关系 集合结构 线性结构:一对一关系 树形结构:一对多关系 图形结构:多对多关系  1.3 研究对象之二：数据的存储结构 数组结构 链式结构 索引结构 散列结构  1.3 研究">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-28T11:16:31.000Z">
-<meta property="article:modified_time" content="2023-10-29T10:36:33.320Z">
+<meta property="article:modified_time" content="2023-11-02T13:12:44.699Z">
 <meta property="article:author" content="xwzhang">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="数据结构">
@@ -42,6 +42,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -249,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          4.3k 字
         
       </span>
     
@@ -260,7 +262,7 @@
         
         
         
-          18 分钟
+          36 分钟
         
       </span>
     
@@ -326,17 +328,122 @@
 <li>红黑树（Red-Black Tree）：红黑树是一种自平衡的二叉搜索树，它在每个节点上增加了一个存储位来表示节点的颜色，可以是红色或黑色。红黑树具有一些特定的规则来确保树始终保持平衡，从而保证了较高的性能。</li>
 </ul>
 <h3 id="2-4-栈"><a href="#2-4-栈" class="headerlink" title="2.4 栈"></a>2.4 栈</h3><p>栈（Stack）是一种遵循后进先出（LIFO）原则的数据结构。栈的插入和删除操作均发生在栈顶。常见的栈操作包括压栈（push）和弹栈（pop），用于许多计算机应用程序的实现，如表达式求值、函数调用等。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Stack</span>&#123;  <span class="hljs-comment">//用数组实现</span><br>    Object[] values;<br>    <span class="hljs-type">int</span> size ; <span class="hljs-comment">//记录存储的元素的个数</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Stack</span><span class="hljs-params">(<span class="hljs-type">int</span> length)</span>&#123;<br>        valus = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[length];<br>    &#125;<br>    <span class="hljs-comment">//入栈</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span><span class="hljs-params">(Object ele)</span>&#123;<br>        <span class="hljs-keyword">if</span>(size &gt;= values.length)&#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(<span class="hljs-string">&quot;栈空间已满，入栈失败&quot;</span>);<br>        &#125;<br>        values[size] = ele;<br>        size ++;<br>    &#125;<br>    <span class="hljs-comment">//出栈</span><br>    <span class="hljs-keyword">public</span> Object <span class="hljs-title function_">pop</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">if</span>(size &lt; = <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(<span class="hljs-string">&quot;栈空间已空,出栈失败&quot;</span>);<br>        &#125;<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> values[size -<span class="hljs-number">1</span>];<br>        values[size-<span class="hljs-number">1</span>] = <span class="hljs-literal">null</span>;<br>        size --;<br>        <span class="hljs-keyword">return</span> obj;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Stack</span><span class="token punctuation">&#123;</span>  <span class="token comment">//用数组实现</span>
+    <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> values<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> size <span class="token punctuation">;</span> <span class="token comment">//记录存储的元素的个数</span>
+    <span class="token keyword">public</span> <span class="token class-name">Stack</span><span class="token punctuation">(</span><span class="token keyword">int</span> length<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        valus <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">[</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//入栈</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">push</span><span class="token punctuation">(</span><span class="token class-name">Object</span> ele<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>size <span class="token operator">>=</span> values<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"栈空间已满，入栈失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        values<span class="token punctuation">[</span>size<span class="token punctuation">]</span> <span class="token operator">=</span> ele<span class="token punctuation">;</span>
+        size <span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//出栈</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>size <span class="token operator">&lt;</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"栈空间已空,出栈失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token class-name">Object</span> obj <span class="token operator">=</span> values<span class="token punctuation">[</span>size <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        values<span class="token punctuation">[</span>size<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        size <span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
 
 
 <h3 id="2-5队列"><a href="#2-5队列" class="headerlink" title="2.5队列"></a>2.5队列</h3><p>队列（Queue）是一种遵循先进先出（FIFO）原则的数据结构。队列的插入操作（入队）发生在队尾，删除操作（出队）发生在队首。队列常用于处理按顺序进行的任务，如打印任务、CPU任务调度等。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Queue</span>&#123;  <span class="hljs-comment">//用数组实现</span><br>    Object [] values;<br>    <span class="hljs-type">int</span> size; <span class="hljs-comment">//记录存储的元素的个数</span><br>    <span class="hljs-comment">//入队</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">add</span><span class="hljs-params">(Object ele)</span>&#123;<br>        <span class="hljs-keyword">if</span>(size &gt; = valus.length)&#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(<span class="hljs-string">&quot;队列已满，添加失败&quot;</span>);<br>        &#125;<br>        values[size] = ele; <br>        size ++ ;<br>    &#125;<br>    <span class="hljs-comment">//出队</span><br>    <span class="hljs-keyword">public</span> Objext <span class="hljs-title function_">get</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">if</span>(size&lt;=<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(<span class="hljs-string">&quot;队列已空，获取失败&quot;</span>);<br>        &#125;<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> values[<span class="hljs-number">0</span>];<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span> ;i&lt; size;i++)&#123;<br>            values[i] = values[i+<span class="hljs-number">1</span>];<br>        &#125;<br>        <span class="hljs-comment">//最后一个元素置空</span><br>        values[size -<span class="hljs-number">1</span> ] = <span class="hljs-literal">null</span>;<br>        size--;<br>        <span class="hljs-keyword">return</span> obj;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Queue</span><span class="token punctuation">&#123;</span>  <span class="token comment">//用数组实现</span>
+    <span class="token class-name">Object</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> values<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> size<span class="token punctuation">;</span> <span class="token comment">//记录存储的元素的个数</span>
+    <span class="token comment">//入队</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">Object</span> ele<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>size <span class="token operator">></span> <span class="token operator">=</span> valus<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"队列已满，添加失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        values<span class="token punctuation">[</span>size<span class="token punctuation">]</span> <span class="token operator">=</span> ele<span class="token punctuation">;</span> 
+        size <span class="token operator">++</span> <span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//出队</span>
+    <span class="token keyword">public</span> <span class="token class-name">Objext</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>size<span class="token operator">&lt;=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"队列已空，获取失败"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token class-name">Object</span> obj <span class="token operator">=</span> values<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span> <span class="token punctuation">;</span>i<span class="token operator">&lt;</span> size<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            values<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> values<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">//最后一个元素置空</span>
+        values<span class="token punctuation">[</span>size <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+        size<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<h2 id="三、List实现类源码分析"><a href="#三、List实现类源码分析" class="headerlink" title="三、List实现类源码分析"></a>三、List实现类源码分析</h2><h3 id="3-1-ArrayList"><a href="#3-1-ArrayList" class="headerlink" title="3.1 ArrayList"></a>3.1 ArrayList</h3><p>1.Arraylist的特点</p>
-<ol start="2">
-<li></li>
+<h2 id="三、List实现类源码分析"><a href="#三、List实现类源码分析" class="headerlink" title="三、List实现类源码分析"></a>三、List实现类源码分析</h2><h3 id="3-1-Arraylist源码解析："><a href="#3-1-Arraylist源码解析：" class="headerlink" title="3.1.Arraylist源码解析："></a>3.1.Arraylist源码解析：</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//jdk7.0 版本</span>
+<span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//底层会初始化数组，数组长度的为10</span>
+<span class="token comment">//添加元素</span>
+list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"AA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//可以添加10个，当满10的时候再添加会默认扩容为原来的1.5倍</span>
+
+<span class="token comment">//jdk8.0版本</span>
+<span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//初始化数组的时候为空</span>
+<span class="token comment">//添加元素</span>
+list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"AA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//当添加元素的时候会初始化数组，让它的长度为10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="3-2-Vector源码解析："><a href="#3-2-Vector源码解析：" class="headerlink" title="3.2.Vector源码解析："></a>3.2.Vector源码解析：</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//JDK 1.8</span>
+<span class="token class-name">Vector</span> v <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vector</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//底层初始化数组，长度为10</span>
+v<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"AA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+v<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"BB"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token comment">//当添加到11个的时候，需要扩容，底层默认扩容2倍</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="3-3-LinkedList-源码解析："><a href="#3-3-LinkedList-源码解析：" class="headerlink" title="3.3. LinkedList 源码解析："></a>3.3. LinkedList 源码解析：</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//没有初始化容量</span>
+list<span class="token punctuation">,</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"AA"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//将"AA"封装到一个Node对象1中，ist对象的属性first、last都指向此Node对象1。</span>
+<span class="token class-name">List</span><span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"BB"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//将"BB"封装到一个Node对象2中，对象1和对象2构成一个双向链表，同时last指向此Node对象2</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token comment">//因为LinkedList使用的是双向链表，不需要考虑扩容问题</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h2 id="四、Map实现类源码分析"><a href="#四、Map实现类源码分析" class="headerlink" title="四、Map实现类源码分析"></a>四、Map实现类源码分析</h2><h3 id="4-1-HashMap源码分析"><a href="#4-1-HashMap源码分析" class="headerlink" title="4.1.HashMap源码分析"></a>4.1.HashMap源码分析</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//JDK 1.7</span>
+<span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span>map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//创建对象的过程中，底层会初始化数组Entry[]table = new Entry[16];</span>
+map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"AA"</span><span class="token punctuation">,</span><span class="token number">78</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//"AA"和78封装到一个Entry对象中，考虑将此对象添加到table数组中</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>添加&#x2F;修改过程</p>
+<p>将(key1,value1)添加到当前的map中:<br>首先，需要调用key1所在类的hashCode()方法，计算key1对应的哈希值1，此哈希值1经过某种算法(hash())之后，得到哈希值2。<br>哈希值2再经过某种算法(indexFor())之后，就确定了(key1,value1)在数组table中的索引位置i。</p>
+<ol>
+<li>​	如果此索引位置i的数组上没有元素，则(key1,value1)添加成功。 —-&gt;情况1</li>
+<li>​	如果此索引位置i的数组上有元素(key2,value2),则需要继续比较key1和key2的哈希值2 —&gt;哈希冲突<ol>
+<li>如果key1的哈希值2与key2的哈希值2不相同，则(key1,value1)添加成功。—-&gt;情况2</li>
+<li>如果key1哈希值2与key2的哈值2相同，则需要继续比较key1和key2的equaLs()。要调用key1所在类的equals()将key2作为参数传递进去.<ol>
+<li>调用equals()，返回fase: 则(key1,value1)添加成功。—-&gt;情况3</li>
+<li>调用equals()，返回true: 则认为key1和key2是相同的。默认情况下，value1替换原有的value2。</li>
 </ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>说明：情况1:将(key1,value1)存放到数组的索引i的位置<br>            情况2,情况3: (key1,value1)元素与现有的(key2,value2)构成单向链表结构，(key1,value1)指向(key2,value2)</p>
+<p>随着不断的添加元素，在满足如下的条件的情况下，会考虑扩容:</p>
+<p>(size &gt;&#x3D; threshold) &amp;&amp; (null !&#x3D; table[i])</p>
+<p>当元素的个数达到临界值(-&gt;数组的长度 * 加载因子)时，就考虑扩容。默认的临界值 &#x3D; 16*0.75 –&gt; 12.</p>
+<p>默认扩容为原来的2倍</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//jdk 1.8</span>
+<span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span>map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//创建对象的过程中，底层不会初始化table数组</span>
+<span class="token comment">//当首次往map添加key-value值得时候，进行判断如果发现table未初始化，则进行初始化</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<p>2.2 jdk8与jdk7的不同之处(以jdk1.8._271为例):</p>
+<ol>
+<li>在jdk8中，当我们创建了HashMap实例以后，底层并没有初始化table数组。当首次添加(key,value)时，进行判断如果发现table尚未初始化，则对数组进行初始化。</li>
+<li>在jdk8中，HashMap底层定义了Node内部类，替换jdk7中的Entry内部类。意味着，我们创建的数组是Node[ ]</li>
+<li>在jdk8中，如果当前的(key,value)经过一系列判断之后，可以添加到当前的数组角标i中。如果此时角标i位置上有元素。在jdk7中是将新的(key,value)指向已有的旧的元素(头插法)，而在jdk8中是旧的元素指向新的(key,value)元素(尾插法)。”七上八下”</li>
+<li>jdk7:数组+单向链表<br>jdk8:数组+单向链表+ 红黑树</li>
+</ol>
+<ul>
+<li>什么时候会使用单向链表变为红黑树:如果数组索引i位置上的元素的个数达到8，并且数组的长度达到64时，我们就将此索引i位置上的多个元素改为使用红黑树的结构进行存储。 (为什么修改呢? 红黑树进行put()&#x2F;get()&#x2F;remove操作的时间复杂度为0(logn)，比单向链表的时间复杂度(n)的好。性能更高。</li>
+<li>什么时候会使用红黑树变为单向链表:当使用红黑树的索引i位置上的元素的个数低于6的时候，就会将红黑树结构退化为单向链表</li>
+</ul>
 
                 
               </div>
@@ -639,6 +746,8 @@
   });
 </script>
 
+
+  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
