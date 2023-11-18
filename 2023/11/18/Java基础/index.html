@@ -16,35 +16,22 @@
   <meta name="author" content="xwzhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、Redis持久化1.RDBRDB全称Redis Database Backup file (Redis数据备份文件)，也被叫做Redis数据快照。简单来说就是把内存中的所有数据都记录到磁盘中。当Redis实例故障重启后，从磁盘读取快照文件，恢复数据。 快照文件称为RDB文件，默认是保存在当前运行目录。 save #由Redis主进程来执行RDB，会阻塞所有命令 bgsave #开启子进程执行R">
+    <meta name="description" content="JAVA基础知识 一、常见易混知识1.JDK和JRE有什么区别？JDK（Java Development Kit）：是Java程序开发工具包，包含JRE和开发人员使用的工具  JDK是用于Java应用程序开发的软件包。 包含Java编译器（javac）和其他开发工具，用于编译、调试和构建Java应用程序。 JDK还包括Java类库的完整副本，允许开发人员访问和使用Java标准库中的类和方法。 JD">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis进阶">
-<meta property="og:url" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/index.html">
+<meta property="og:title" content="Java基础">
+<meta property="og:url" content="http://zxwblog.top/2023/11/18/Java%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="xwzhang&#39;s BLOG">
-<meta property="og:description" content="一、Redis持久化1.RDBRDB全称Redis Database Backup file (Redis数据备份文件)，也被叫做Redis数据快照。简单来说就是把内存中的所有数据都记录到磁盘中。当Redis实例故障重启后，从磁盘读取快照文件，恢复数据。 快照文件称为RDB文件，默认是保存在当前运行目录。 save #由Redis主进程来执行RDB，会阻塞所有命令 bgsave #开启子进程执行R">
+<meta property="og:description" content="JAVA基础知识 一、常见易混知识1.JDK和JRE有什么区别？JDK（Java Development Kit）：是Java程序开发工具包，包含JRE和开发人员使用的工具  JDK是用于Java应用程序开发的软件包。 包含Java编译器（javac）和其他开发工具，用于编译、调试和构建Java应用程序。 JDK还包括Java类库的完整副本，允许开发人员访问和使用Java标准库中的类和方法。 JD">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108190726167.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108193503288.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108200721665.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108201202419.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108201411092.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108203347471.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108203841860.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108205030363.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108205246131.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108205714403.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108205851624.png">
-<meta property="og:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108210241329.png">
-<meta property="article:published_time" content="2023-11-08T10:40:46.000Z">
-<meta property="article:modified_time" content="2023-11-14T11:15:24.870Z">
+<meta property="article:published_time" content="2023-11-18T06:27:50.000Z">
+<meta property="article:modified_time" content="2023-11-18T06:29:02.690Z">
 <meta property="article:author" content="xwzhang">
-<meta property="article:tag" content="Redis">
+<meta property="article:tag" content="Java基础">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zxwblog.top/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108190726167.png">
   
   
   
-  <title>Redis进阶 - xwzhang&#39;s BLOG</title>
+  <title>Java基础 - xwzhang&#39;s BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -239,7 +226,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Redis进阶"></span>
+            <span id="subtitle" data-typed-text="Java基础"></span>
           
         </div>
 
@@ -250,8 +237,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-11-08 18:40" pubdate>
-          2023年11月8日 晚上
+        <time datetime="2023-11-18 14:27" pubdate>
+          2023年11月18日 下午
         </time>
       </span>
     
@@ -262,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          2.7k 字
         
       </span>
     
@@ -273,7 +260,7 @@
         
         
         
-          20 分钟
+          23 分钟
         
       </span>
     
@@ -310,90 +297,137 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Redis进阶</h1>
+            <h1 id="seo-header">Java基础</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="一、Redis持久化"><a href="#一、Redis持久化" class="headerlink" title="一、Redis持久化"></a>一、Redis持久化</h2><h3 id="1-RDB"><a href="#1-RDB" class="headerlink" title="1.RDB"></a>1.RDB</h3><p>RDB全称Redis Database Backup file (Redis数据备份文件)，也被叫做Redis数据快照。简单来说就是把内存中的所有数据都记录到磁盘中。当Redis实例故障重启后，从磁盘读取快照文件，恢复数据。</p>
-<p>快照文件称为RDB文件，默认是保存在当前运行目录。</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">save <span class="token comment">#由Redis主进程来执行RDB，会阻塞所有命令</span>
-bgsave <span class="token comment">#开启子进程执行RDB，避免主进程受到影响</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+                <h1 id="JAVA基础知识"><a href="#JAVA基础知识" class="headerlink" title="JAVA基础知识"></a>JAVA基础知识</h1><hr>
+<h2 id="一、常见易混知识"><a href="#一、常见易混知识" class="headerlink" title="一、常见易混知识"></a>一、常见易混知识</h2><h3 id="1-JDK和JRE有什么区别？"><a href="#1-JDK和JRE有什么区别？" class="headerlink" title="1.JDK和JRE有什么区别？"></a>1.JDK和JRE有什么区别？</h3><p>JDK（Java Development Kit）：是Java程序开发工具包，包含JRE和开发人员使用的工具</p>
+<ul>
+<li>JDK是用于Java应用程序开发的软件包。</li>
+<li>包含Java编译器（javac）和其他开发工具，用于编译、调试和构建Java应用程序。</li>
+<li>JDK还包括Java类库的完整副本，允许开发人员访问和使用Java标准库中的类和方法。</li>
+<li>JDK中包括开发人员需要的所有工具和资源，以便他们创建、测试和调试Java应用程序。</li>
+</ul>
+<p>JRE（Java Runtime Environment）：是Java程序的运行环境，包含JVM和运行时所需要的核心类库</p>
+<ul>
+<li>JRE是用于在计算机上运行Java应用程序的软件包。</li>
+<li>包含Java虚拟机（JVM）和运行时库，这些组件使得计算机能够执行Java字节码（Java编译后的代码）。</li>
+<li>JRE没有Java编译器或其他开发工具，因此不适合开发Java应用程序，而仅用于运行已编译的Java程序。</li>
+</ul>
+<p>简而言之，JDK是用于Java开发的工具包，包含编译器和开发工具，而JRE是用于在计算机上运行Java应用程序的运行时环境。如果您要编写Java应用程序，您需要安装JDK，但如果只是要运行Java应用程序，那么JRE就足够了。</p>
+<p>JDK&#x3D;JRE+开发工具包</p>
+<p>JRE&#x3D;JVM+JavaSE标准类库</p>
+<h3 id="2-JVM是什么？"><a href="#2-JVM是什么？" class="headerlink" title="2.JVM是什么？"></a>2.JVM是什么？</h3><p>JVM (Java Virtual Machine ，Java虚拟机) : 是一个虚拟的计算机是Java程序的运行环境。JVM具有指令集并使用不同的存储区域，负责执行指令，管理数据、内存、寄存器。</p>
+<h3 id="3-JAVA中基本和引用数据类型各有哪些？"><a href="#3-JAVA中基本和引用数据类型各有哪些？" class="headerlink" title="3.JAVA中基本和引用数据类型各有哪些？"></a>3.JAVA中基本和引用数据类型各有哪些？</h3><p><strong>基本数据类型</strong>（primitive data types）：</p>
+<ol>
+<li>整数类型：<ul>
+<li>byte：字节，8位，范围为-128到127。</li>
+<li>short：短整数，16位，范围为-32,768到32,767。</li>
+<li>int：整数，32位，范围为-2^31到2^31-1。</li>
+<li>long：长整数，64位，范围为-2^63到2^63-1。</li>
+</ul>
+</li>
+<li>浮点数类型：<ul>
+<li>float：单精度浮点数，32位，通常用于小数，约有6-7位有效数字。</li>
+<li>double：双精度浮点数，64位，通常用于小数，约有15-16位有效数字。</li>
+</ul>
+</li>
+<li>字符类型：<ul>
+<li>char：字符，16位，用于表示单个Unicode字符。</li>
+</ul>
+</li>
+<li>布尔类型：<ul>
+<li>boolean：布尔值，表示true或false。</li>
+</ul>
+</li>
+</ol>
+<p><strong>引用数据类型</strong>（reference data types）：</p>
+<ol>
+<li>类（Class）：类是用户自定义的数据类型，可以包含字段（属性）和方法。例如：<code>String</code>、<code>ArrayList</code>、<code>Person</code>等。</li>
+<li>接口（Interface）：接口定义了一组方法，类可以实现一个或多个接口。例如：<code>Serializable</code>、<code>Comparable</code>等。</li>
+<li>数组（Array）：数组是一种引用数据类型，可以存储多个相同类型的数据元素。例如：<code>int[]</code>、<code>String[]</code>等。</li>
+<li>枚举（Enum）：枚举是一种特殊的引用数据类型，用于定义一组有限的命名常量。例如：<code>enum Day &#123;SUNDAY, MONDAY, ...&#125;</code>。</li>
+<li>包装类（Wrapper Classes）：Java提供了包装类来将基本数据类型封装成对象，例如：<code>Integer</code>、<code>Double</code>、<code>Boolean</code>等。</li>
+<li>用户自定义类和自定义数据类型：开发者可以创建自己的类和数据类型，以满足特定需求。</li>
+</ol>
+<p>基本数据类型用于存储简单的数值，它们在内存中的存储方式不同于引用数据类型。基本数据类型直接存储数据值，而引用数据类型存储的是对实际数据对象的引用。这两种数据类型在Java中有不同的用途和特性。</p>
+<p>小tip：1字节（Byte）等于8位（bit）</p>
+<h3 id="4-Switch-case选择结构"><a href="#4-Switch-case选择结构" class="headerlink" title="4.Switch-case选择结构"></a>4.Switch-case选择结构</h3><p>根据表达式中的值，依次匹配case语句。一旦与某一个case中的常量相等，那么就执行此case中的执行语句，执行完此执行语句之后。</p>
+<ul>
+<li>情况1: 遇到break，则执行break后，跳出当前的switch-case结构</li>
+<li>情况2: 没有遇到break，则继续执行其后的case中的执行语句。</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>switch中的表达式只能是特定的数据类型。如下: byte、short、char、int、枚举(JDK5.0新增) String(JDK7.0新增) </li>
+<li>case 后都是跟的常量，使用表达式与这些常量做相等的判断，不能进行范围的判断。</li>
+<li>不能跟boolean类型进行比较</li>
+</ul>
+<h3 id="5-do-while循环"><a href="#5-do-while循环" class="headerlink" title="5.do-while循环"></a>5.do-while循环</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token number">1.</span>
+<span class="token keyword">do</span><span class="token punctuation">&#123;</span>
+    <span class="token number">3.</span>
+    <span class="token number">4.</span>
+<span class="token punctuation">&#125;</span><span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">2.</span><span class="token punctuation">)</span>；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p>Redis停机前会执行一次RDB</p>
-<h4 id="1-1-bgsave"><a href="#1-1-bgsave" class="headerlink" title="1.1 bgsave"></a>1.1 bgsave</h4><p>bgsave开始时会fork主进程得到子进程，子进程共享主进程的内存数据。完成fork后读取内存数据并写入 RDB文件。</p>
-<p>fork采用的是copy-on-write技术</p>
-<ul>
-<li>当主进程执行读操作时，访问共享内存</li>
-<li>当主进程执行写操作时，则会拷贝一份数据，执行写操作</li>
-</ul>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108190726167.png" srcset="/img/loading.gif" lazyload alt="image-20231108190726167"></p>
-<h3 id="2-AOF"><a href="#2-AOF" class="headerlink" title="2.AOF"></a>2.AOF</h3><p>AOF全称为Append 0nly File (追加文件)。Redis处理的每一个写命令都会记录在AOF文件，可以看做是命令日志文件。</p>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108193503288.png" srcset="/img/loading.gif" lazyload alt="image-20231108193503288"></p>
-<p>AOF默认是关闭的，需要修改redis.conf配置文件来开启AOF</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#是否开启AOF功能，默认是no</span>
-appendonly <span class="token function">yes</span>
-<span class="token comment"># AOF文件的名称"</span>
-appendfilename  <span class="token string">"appendonly.aof"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>执行顺序1 -&gt; 3 -&gt; 4 -&gt; 2。</p>
+<p>说明：</p>
+<p>do-while循环至少执行一次循环体：哪怕刚开始不满足while中的条件，也会执行do中的语句一次</p>
+<h3 id="6-break和continue的说明"><a href="#6-break和continue的说明" class="headerlink" title="6.break和continue的说明"></a>6.break和continue的说明</h3><p>break：使用范围在switch-case循环中，结束或跳出当前循环</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">%</span><span class="token number">4</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//输出的是1，2，3，到4的时候直接跳出循环</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p>AOF的命令记录的频率也可以通过redis.conf文件来配</p>
-<figure><div class="code-wrapper"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#表示每执行一次写命令，立即记录到AOF文件</span>
-appendfsync always
-<span class="token comment"># 写命令执行完先放入AOF缓冲区，然后表示每隔1秒将缓冲区数据写到AOF文件，是默认方案</span>
-appendfsync everysec
-<span class="token comment">#写命令执行完先放入AOF缓冲区，由操作系统决定何时将缓冲区内容写回磁盘</span>
-appendfsync no<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>continue： 使用范围在循环结构中，结束或跳出本次循环</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">10</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">%</span><span class="token number">4</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">continue</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">//输出的是1，2，3，5，6，7，8，9，10  4的时候直接跳过本次循环，所以没有4</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108200721665.png" srcset="/img/loading.gif" lazyload alt="image-20231108200721665"></p>
-<h4 id="2-1-bgrewriteaof"><a href="#2-1-bgrewriteaof" class="headerlink" title="2.1  bgrewriteaof"></a>2.1  bgrewriteaof</h4><p>因为是记录命令，AOF文件会比RDB文件大的多。而且AOF会记录对一个key的多次写操作，但只有最后一次写操作才有意义。通过执行bgrewriteaof命令，可以让AOF文件执行重写功能，用最少的命令达到相同效果。</p>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108201202419.png" srcset="/img/loading.gif" lazyload alt="image-20231108201202419"></p>
-<h3 id="3-AOF和RDB对比"><a href="#3-AOF和RDB对比" class="headerlink" title="3.AOF和RDB对比"></a>3.AOF和RDB对比</h3><p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108201411092.png" srcset="/img/loading.gif" lazyload alt="image-20231108201411092"></p>
-<h2 id="二、Redis主从"><a href="#二、Redis主从" class="headerlink" title="二、Redis主从"></a>二、Redis主从</h2><h3 id="1-数据同步原理"><a href="#1-数据同步原理" class="headerlink" title="1.数据同步原理"></a>1.数据同步原理</h3><p>主从的第一次同步是全量同步：</p>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108203347471.png" srcset="/img/loading.gif" lazyload alt="image-20231108203347471"></p>
-<p>master如何判断slave是不是第一次来同步数据? 这里会用到两个很重要的概念:</p>
-<ul>
-<li>Replication d:简称replid，是数据集的标记，id一致则说明是同一数据集。每一个master都有唯一的replidslave则会继承master节点的replid</li>
-<li>offset:偏移量，随着记录在repl baklog中的数据增多而逐渐增大。slave完成同步时也会记录当前同步的offset.如果slave的offset小于master的offset，说明slave数据落后于master，需要更新</li>
+<h2 id="二、数组"><a href="#二、数组" class="headerlink" title="二、数组"></a>二、数组</h2><h3 id="1-数组的特点"><a href="#1-数组的特点" class="headerlink" title="1.数组的特点"></a>1.数组的特点</h3><ul>
+<li>数组中的元素在内存中是依次紧密排列的，有序的。</li>
+<li>数组，属于引用数据类型的变量。数组的元素，既可以是基本数据类型，也可以引用数据类型。</li>
 </ul>
-<p>因此slave做数据同步，必须向master声明自己的replication id 和offset，master才可以判断到底需要同步哪些数据</p>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108203841860.png" srcset="/img/loading.gif" lazyload alt="image-20231108203841860"></p>
-<h3 id="2-增量同步原理"><a href="#2-增量同步原理" class="headerlink" title="2.增量同步原理"></a>2.增量同步原理</h3><p>主从第一次同步是全量同步但如果slave重启后同步，则执行增量同步</p>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108205030363.png" srcset="/img/loading.gif" lazyload alt="image-20231108205030363"></p>
-<h3 id="3-优化redis主从同步集群："><a href="#3-优化redis主从同步集群：" class="headerlink" title="3.优化redis主从同步集群："></a>3.优化redis主从同步集群：</h3><ul>
-<li>在master中配置repl-diskless-sync yes启用无磁盘复制，避免全量同步时的磁盘10。</li>
-<li>Redis单节点上的内存占用不要太大，减少RDB导致的过多磁盘I0</li>
-<li>适当提高repl baklog的大小，发现slave宕机时尽快实现故障恢复，尽可能避免全量同步</li>
-<li>限制一个master上的slave节点数量，如果实在是太多slave，则可以采用主-从-从链式结构，减少master压力</li>
-</ul>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108205246131.png" srcset="/img/loading.gif" lazyload alt="image-20231108205246131"></p>
-<h2 id="三、Redis哨兵"><a href="#三、Redis哨兵" class="headerlink" title="三、Redis哨兵"></a>三、Redis哨兵</h2><h3 id="1-哨兵的作用"><a href="#1-哨兵的作用" class="headerlink" title="1.哨兵的作用"></a>1.哨兵的作用</h3><p>Redis提供了哨兵(Sentinel) 机制来实现主从集群的自动故障恢复。哨兵的结构和作用如下：</p>
-<ul>
-<li><strong>监控:</strong> Sentinel会不断检查您的master和slave是否按预期工作</li>
-<li>**自动故障恢复:**如果master故障，Sentinel会将个slave提升为master。当故障实例恢复后也以新的master为主</li>
-<li>**通知:**Sentinel充当Redis客户端的服务发现来源，当集群发生故障转移时，会将最新信息推送给Redis的客户端</li>
-</ul>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108205714403.png" srcset="/img/loading.gif" lazyload alt="image-20231108205714403"></p>
-<h3 id="2-服务状态监控"><a href="#2-服务状态监控" class="headerlink" title="2.服务状态监控"></a>2.服务状态监控</h3><p>Sentinel基于心跳机制监测服务状态，每隔1秒向集群的每个实例发送ping命令:</p>
-<ul>
-<li>主观下线:如果某sentinel节点发现某实例未在规定时间响应，则认为该实例主观下线</li>
-<li>客观下线:若超过指定数量(quorum)的sentinel都认为该实例主观下线，则该实例客观下线。quorum值最好超过Sentinel实例数量的一半。</li>
-</ul>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108205851624.png" srcset="/img/loading.gif" lazyload alt="image-20231108205851624"></p>
-<h3 id="3-选举新的master"><a href="#3-选举新的master" class="headerlink" title="3.选举新的master"></a>3.选举新的master</h3><p>一旦发现master故障，sentinel需要在salve中选择一个作为新的master，选择依据是这样的:</p>
-<ul>
-<li>首先会判断slave节点与mater节点断开时间长短，如果超过指定值(down-after-milliseconds* 10)则会排除该slave节点</li>
-<li>然后判断slave节点的slave-priority值，越小优先级越高，如果是0则永不参与选举</li>
-<li>如果slave-prority一样，则判断slave节点的offset值，越大说明数据越新，优先级越高</li>
-<li>最后是判断slave节点的运行id大小，越小优先级越高。</li>
-</ul>
-<h3 id="4-如何实现故障转移"><a href="#4-如何实现故障转移" class="headerlink" title="4.如何实现故障转移"></a>4.如何实现故障转移</h3><p>当选中了其中一个slave为新的master后 (例如slave1)，故障的转移的步骤如下：</p>
-<ul>
-<li>sentinel给备选的slave1节点发送slaveof no one命令，让该节点成为master。</li>
-<li>sentinel给所有其它slave发送slaveof192.1681501017002命令，让这些slave成为新master的从节点，开始从新的master上同步数据。</li>
-<li>最后，sentinel将故障节点标记为slave，当故障节点恢复后会自动成为新的master的slave节点。</li>
-</ul>
-<p><img src="/2023/11/08/redis%E8%BF%9B%E9%98%B6/image-20231108210241329.png" srcset="/img/loading.gif" lazyload alt="image-20231108210241329"></p>
+<h3 id="2-初始化方式"><a href="#2-初始化方式" class="headerlink" title="2.初始化方式"></a>2.初始化方式</h3><p>静态初始化</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span>prices <span class="token operator">=</span><span class="token keyword">new</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token number">20.1</span><span class="token punctuation">,</span><span class="token number">3.11</span><span class="token punctuation">,</span><span class="token number">34.22</span><span class="token punctuation">,</span><span class="token number">32.22</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 
+<p>动态初始化</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span>foods <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">String</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+
+<p>3.Arrays工具类</p>
+<ul>
+<li><p>Arrays.equals()方法</p>
+<ul>
+<li><figure><div class="code-wrapper"><pre><code class="java">int [] arr1 =new int []&#123;1,2,3,4,5&#125;;
+int [] arr2 =new int []&#123;1,2,3,4,5&#125;;
+
+System.out.println(arr1 == arr2); //输出false，因为比较的是地址值
+boolean isEquals = Arrays.equals(arr1,arr2);
+System.out.println(isEquals); //输出的是true，因为比较的是内容
+</code></pre></div></figure>
+</li>
+</ul>
+</li>
+<li><p>Arrays.toString()方法</p>
+<ul>
+<li>直接将数组输出为字符串</li>
+</ul>
+</li>
+<li><p>Arrays.sort()方法</p>
+<ul>
+<li>将数组排序（内部使用快速排序算法）</li>
+</ul>
+</li>
+</ul>
+<h2 id="三、面向对象"><a href="#三、面向对象" class="headerlink" title="三、面向对象"></a>三、面向对象</h2>
                 
               </div>
             
@@ -411,7 +445,7 @@ appendfsync no<span aria-hidden="true" class="line-numbers-rows"><span></span><s
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E5%BA%93/" class="category-chain-item">缓存数据库</a>
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
   
   
 
@@ -426,7 +460,7 @@ appendfsync no<span aria-hidden="true" class="line-numbers-rows"><span></span><s
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Redis/" class="print-no-link">#Redis</a>
+        <a href="/tags/Java%E5%9F%BA%E7%A1%80/" class="print-no-link">#Java基础</a>
       
     </div>
   
@@ -438,8 +472,8 @@ appendfsync no<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Redis进阶</div>
-      <div>http://zxwblog.top/2023/11/08/redis进阶/</div>
+      <div>Java基础</div>
+      <div>http://zxwblog.top/2023/11/18/Java基础/</div>
     </div>
     <div class="license-meta">
       
@@ -451,7 +485,7 @@ appendfsync no<span aria-hidden="true" class="line-numbers-rows"><span></span><s
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年11月8日</div>
+          <div>2023年11月18日</div>
         </div>
       
       
@@ -483,18 +517,12 @@ appendfsync no<span aria-hidden="true" class="line-numbers-rows"><span></span><s
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/11/09/Java%E8%BF%9B%E9%98%B6-IO%E6%B5%81/" title="Java进阶-IO流">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java进阶-IO流</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/28/MySQL-%E8%BF%9B%E9%98%B6%E7%AF%87/" title="MySQL-进阶篇">
-                        <span class="hidden-mobile">MySQL-进阶篇</span>
+                      <a href="/2023/11/18/JVM%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" title="JVM学习记录">
+                        <span class="hidden-mobile">JVM学习记录</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
