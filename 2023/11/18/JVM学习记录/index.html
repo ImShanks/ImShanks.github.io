@@ -16,19 +16,23 @@
   <meta name="author" content="xwzhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、什么是JVM">
+    <meta name="description" content="一、什么是JVM1.定义：JVM(Java Virtual Machine)- java程序的运行环境 2.好处： 一次编写，到处运行 自动内存管理，垃圾回收功能 数组下标越界，越界检查 多态  比较： JVM，JRE ，JDK 3.JDK和JRE有什么区别？JDK（Java Development Kit）：是Java程序开发工具包，包含JRE和开发人员使用的工具  JDK是用于Java应用程序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM学习记录">
 <meta property="og:url" content="http://zxwblog.top/2023/11/18/JVM%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="xwzhang&#39;s BLOG">
-<meta property="og:description" content="一、什么是JVM">
+<meta property="og:description" content="一、什么是JVM1.定义：JVM(Java Virtual Machine)- java程序的运行环境 2.好处： 一次编写，到处运行 自动内存管理，垃圾回收功能 数组下标越界，越界检查 多态  比较： JVM，JRE ，JDK 3.JDK和JRE有什么区别？JDK（Java Development Kit）：是Java程序开发工具包，包含JRE和开发人员使用的工具  JDK是用于Java应用程序">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://zxwblog.top/2023/11/18/JVM%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20231118163847165.png">
+<meta property="og:image" content="http://zxwblog.top/2023/11/18/JVM%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20231120145843854.png">
+<meta property="og:image" content="http://zxwblog.top/2023/11/18/JVM%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20231120145849749.png">
 <meta property="article:published_time" content="2023-11-18T06:23:37.000Z">
-<meta property="article:modified_time" content="2023-11-18T06:29:04.757Z">
+<meta property="article:modified_time" content="2023-11-20T11:26:42.381Z">
 <meta property="article:author" content="xwzhang">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://zxwblog.top/2023/11/18/JVM%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20231118163847165.png">
   
   
   
@@ -250,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8 字
+          3.6k 字
         
       </span>
     
@@ -261,7 +265,7 @@
         
         
         
-          1 分钟
+          31 分钟
         
       </span>
     
@@ -303,7 +307,221 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一、什么是JVM"><a href="#一、什么是JVM" class="headerlink" title="一、什么是JVM"></a>一、什么是JVM</h1><h2 id><a href="#" class="headerlink" title></a></h2>
+                <h1 id="一、什么是JVM"><a href="#一、什么是JVM" class="headerlink" title="一、什么是JVM"></a>一、什么是JVM</h1><h3 id="1-定义："><a href="#1-定义：" class="headerlink" title="1.定义："></a>1.定义：</h3><p>JVM(Java Virtual Machine)- java程序的运行环境</p>
+<h3 id="2-好处："><a href="#2-好处：" class="headerlink" title="2.好处："></a>2.好处：</h3><ul>
+<li>一次编写，到处运行</li>
+<li>自动内存管理，垃圾回收功能</li>
+<li>数组下标越界，越界检查</li>
+<li>多态</li>
+</ul>
+<p>比较：</p>
+<p>JVM，JRE ，JDK</p>
+<h3 id="3-JDK和JRE有什么区别？"><a href="#3-JDK和JRE有什么区别？" class="headerlink" title="3.JDK和JRE有什么区别？"></a>3.JDK和JRE有什么区别？</h3><p>JDK（Java Development Kit）：是Java程序开发工具包，包含JRE和开发人员使用的工具</p>
+<ul>
+<li>JDK是用于Java应用程序开发的软件包。</li>
+<li>包含Java编译器（javac）和其他开发工具，用于编译、调试和构建Java应用程序。</li>
+<li>JDK还包括Java类库的完整副本，允许开发人员访问和使用Java标准库中的类和方法。</li>
+<li>JDK中包括开发人员需要的所有工具和资源，以便他们创建、测试和调试Java应用程序。</li>
+</ul>
+<p>JRE（Java Runtime Environment）：是Java程序的运行环境，包含JVM和运行时所需要的核心类库</p>
+<ul>
+<li>JRE是用于在计算机上运行Java应用程序的软件包。</li>
+<li>包含Java虚拟机（JVM）和运行时库，这些组件使得计算机能够执行Java字节码（Java编译后的代码）。</li>
+<li>JRE没有Java编译器或其他开发工具，因此不适合开发Java应用程序，而仅用于运行已编译的Java程序。</li>
+</ul>
+<p>简而言之，JDK是用于Java开发的工具包，包含编译器和开发工具，而JRE是用于在计算机上运行Java应用程序的运行时环境。如果您要编写Java应用程序，您需要安装JDK，但如果只是要运行Java应用程序，那么JRE就足够了。</p>
+<p>JDK&#x3D;JRE+开发工具包</p>
+<p>JRE&#x3D;JVM+JavaSE标准类库</p>
+<h1 id="二、内存结构"><a href="#二、内存结构" class="headerlink" title="二、内存结构"></a>二、内存结构</h1><h2 id="1-程序计数器"><a href="#1-程序计数器" class="headerlink" title="1 程序计数器"></a>1 程序计数器</h2><h3 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h3><p>程序计数器(Program Counter Register)</p>
+<h3 id="1-2-作用"><a href="#1-2-作用" class="headerlink" title="1.2 作用"></a>1.2 作用</h3><p>记住下一条jvm指定的执行地址</p>
+<h3 id="1-3-特点"><a href="#1-3-特点" class="headerlink" title="1.3 特点"></a>1.3 特点</h3><ul>
+<li>线程私有<ul>
+<li>解释一下，在多线程的环境下，在多个线程并发运行的时候，线程之间切换，每个线程都有自己的程序计数器，用于记录当前运行到哪一条指令，用于线程之间切换能继续之前的指令运行。</li>
+</ul>
+</li>
+<li>不会存在内存溢出</li>
+</ul>
+<h2 id="2-虚拟机栈"><a href="#2-虚拟机栈" class="headerlink" title="2.虚拟机栈"></a>2.虚拟机栈</h2><h3 id="2-1-定义"><a href="#2-1-定义" class="headerlink" title="2.1 定义"></a>2.1 定义</h3><p>Java Virtual Machine Stacks （Java虚拟机栈）</p>
+<ul>
+<li>每个线程运行时所需要的内存，成为虚拟机栈</li>
+<li>每个栈由多个栈帧组成，对应每次方法调用时所占用的内存</li>
+<li>每个线程只能有一个活动栈帧，对应着当前正在执行的那个方法</li>
+</ul>
+<p>问题辨析</p>
+<p>1.垃圾回收是否涉及栈内存？</p>
+<p>不涉及，栈帧内存在每一次方法调用结束后自动回收，完全不需要垃圾回收来管理</p>
+<p>2.栈内存分配越大越好吗？</p>
+<p>栈内存划分过大会导致线程数变少，线程占用内存过高，会导致系统能运行的线程数变少</p>
+<p>3.方法内的局部变量是否线程安全？</p>
+<ul>
+<li>不会，只有共享的数据才会产生线程安全</li>
+<li>如果方法内局部变量没有逃离方法的作用访问，它是线程安全的</li>
+<li>如果时局部变量引用了对象，并逃离方法的作用方法，需要考虑线程安全</li>
+</ul>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo01</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">StringBuilder</span> sb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-></span><span class="token punctuation">&#123;</span>
+            <span class="token function">m2</span><span class="token punctuation">(</span>sb<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//线程安全</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">m1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">StringBuilder</span> sb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//线程不安全，因为它被让做入参传入了方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">m2</span><span class="token punctuation">(</span><span class="token class-name">StringBuilder</span> sb<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//线程不安全，因为它被返回值返回了</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">StringBuilder</span> <span class="token function">m3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token class-name">StringBuilder</span> sb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sb<span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> sb<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="2-2-栈内存溢出"><a href="#2-2-栈内存溢出" class="headerlink" title="2.2 栈内存溢出"></a>2.2 栈内存溢出</h3><ul>
+<li>栈帧过多导致栈内存溢出</li>
+<li>栈帧过大导致栈内存溢出</li>
+</ul>
+<h3 id="2-3-线程运行诊断"><a href="#2-3-线程运行诊断" class="headerlink" title="2.3 线程运行诊断"></a>2.3 线程运行诊断</h3><p>案例一：cpu占用过多</p>
+<p>定位：（linux中）</p>
+<ul>
+<li>用top命令定位哪个进程对cpu得占用过高</li>
+<li>ps H -eo pid，tid，%cpu | grep 进程id</li>
+<li>jstack指令 + 进程id<ul>
+<li>可以根据线程id找到有问题得进程，进一步定位到问题代码得源码行号</li>
+</ul>
+</li>
+</ul>
+<p>案例二：程序运行很长时间没有结果</p>
+<h2 id="3-本地方法栈"><a href="#3-本地方法栈" class="headerlink" title="3.本地方法栈"></a>3.本地方法栈</h2><p><img src="/2023/11/18/JVM%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20231118163847165.png" srcset="/img/loading.gif" lazyload alt="image-20231118163847165"></p>
+<p>java虚拟机调用本地方法时，需要为它们提供的方法区，像hashcode( )方法，clone( )方法</p>
+<p>本地方法是c或c++编写的方法，用于对底层的操作系统进行操作</p>
+<h2 id="4-堆"><a href="#4-堆" class="headerlink" title="4.堆"></a>4.堆</h2><h3 id="4-1-定义"><a href="#4-1-定义" class="headerlink" title="4.1 定义"></a>4.1 定义</h3><p>堆（heap）：通过new关键字，创建对象都会使用堆内存</p>
+<h3 id="4-2特点"><a href="#4-2特点" class="headerlink" title="4.2特点"></a>4.2特点</h3><ul>
+<li>它是线程共享的，堆中对象都需要考虑线程安全的问题</li>
+<li>有垃圾回收机制</li>
+</ul>
+<h3 id="4-3-堆内存溢出"><a href="#4-3-堆内存溢出" class="headerlink" title="4.3 堆内存溢出"></a>4.3 堆内存溢出</h3><figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+* 堆内存溢出演示
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> demo<span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> i<span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">String</span> a <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                a <span class="token operator">=</span> a <span class="token operator">+</span>a<span class="token punctuation">;</span>
+                i<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> a<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="4-4-堆内存诊断"><a href="#4-4-堆内存诊断" class="headerlink" title="4.4 堆内存诊断"></a>4.4 堆内存诊断</h3><p>1.jps工具</p>
+<ul>
+<li>查看当前系统中有哪些Java进程</li>
+</ul>
+<p>2.jmap工具</p>
+<ul>
+<li>查看堆内存占用情况   jmap - heap 进程 id</li>
+</ul>
+<p>3.jconsole工具</p>
+<ul>
+<li>图形界面的，多功能的监测工具，可以连续监测</li>
+</ul>
+<h2 id="5-方法区"><a href="#5-方法区" class="headerlink" title="5.方法区"></a>5.方法区</h2><h3 id="5-1-定义"><a href="#5-1-定义" class="headerlink" title="5.1 定义"></a>5.1 定义</h3><ul>
+<li>方法区是一块内存，用于存储类的元信息，如类的字段、方法信息、构造方法，常量池等。</li>
+<li>方法区在JVM规范中也被称为“永久代”（在Java 7及之前的版本）或“元空间”（在Java 8及之后的版本）</li>
+</ul>
+<h3 id="5-2-组成"><a href="#5-2-组成" class="headerlink" title="5.2 组成"></a>5.2 组成</h3><p><img src="/2023/11/18/JVM%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20231120145843854.png" srcset="/img/loading.gif" lazyload alt="image-20231120145843854"></p>
+<p><img src="/2023/11/18/JVM%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20231120145849749.png" srcset="/img/loading.gif" lazyload alt="image-20231120145849749"></p>
+<ul>
+<li><p><strong>运行时常量池（Runtime Constant Pool）</strong>：</p>
+<ul>
+<li>存储类、接口中的常量，包括字符串常量、final常量等。</li>
+<li>运行时常量池在类加载时被创建，与类一起存放在方法区中。</li>
+</ul>
+</li>
+<li><p><strong>字段和方法信息</strong>：</p>
+<ul>
+<li>存储类的字段信息，包括字段的名称、类型、访问修饰符等。</li>
+<li>存储类的方法信息，包括方法的名称、返回类型、参数类型、访问修饰符等。</li>
+</ul>
+</li>
+<li><p><strong>构造方法和普通方法的字节码</strong>：</p>
+<ul>
+<li>存储类的构造方法和普通方法的字节码，即编译后的中间代码。</li>
+</ul>
+</li>
+<li><p><strong>类变量&#x2F;静态变量</strong>：</p>
+<ul>
+<li>存储被声明为static的变量。</li>
+</ul>
+</li>
+<li><p><strong>常量</strong>：</p>
+<ul>
+<li>存储在类中被声明为final的常量。</li>
+</ul>
+</li>
+<li><p><strong>运行时类型信息</strong>：</p>
+<ul>
+<li>存储类的泛型信息，即泛型的类型参数。</li>
+</ul>
+</li>
+<li><p><strong>动态生成的代理类和动态生成的字节码</strong>：</p>
+<ul>
+<li>在运行期间由Java字节码生成的类信息。</li>
+</ul>
+</li>
+</ul>
+<p>注意：在Java 8及之后的版本中，元空间取代了永久代，方法区的实现发生了变化。元空间不再使用传统的固定大小的内存，而是使用本地内存。元空间中的内存由操作系统动态分配，因此不再受到永久代大小的限制。</p>
+<h3 id="5-3-方法区内存溢出"><a href="#5-3-方法区内存溢出" class="headerlink" title="5.3 方法区内存溢出"></a>5.3 方法区内存溢出</h3><p>代码演示</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Demo1_8</span> <span class="token keyword">extends</span> <span class="token class-name">ClassLoader</span> <span class="token punctuation">&#123;</span><span class="token comment">//可以用来加载类的二进制字节码</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">Demo1_8</span> test <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Demo1_8</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">,</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token comment">// CIasswriter 作用是生成类的二进制字节码</span>
+                <span class="token class-name">Classwriter</span> cw <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Classwriter</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 版本号，public，类名，包名，父类，接口</span>
+                <span class="token class-name">Cw</span><span class="token punctuation">.</span><span class="token function">visit</span><span class="token punctuation">(</span><span class="token class-name">Opcodes</span><span class="token punctuation">.</span><span class="token constant">V1_8</span><span class="token punctuation">,</span><span class="token class-name">Opcodes</span><span class="token punctuation">.</span><span class="token constant">ACC_PUBLIC</span><span class="token punctuation">,</span><span class="token string">"Class"</span> <span class="token operator">+</span> i<span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">,</span><span class="token string">"java/lang/0bject"</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">//返回 byte[]</span>
+                <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> code <span class="token operator">=</span> cw<span class="token punctuation">.</span><span class="token function">toByteArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 执行了类的加载</span>
+                test<span class="token punctuation">.</span><span class="token function">defineClass</span><span class="token punctuation">(</span> <span class="token string">"Class"</span> <span class="token operator">+</span> i<span class="token punctuation">,</span> code<span class="token punctuation">,</span> <span class="token number">0</span> <span class="token punctuation">,</span> code<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">finally</span> <span class="token punctuation">&#123;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+
+<h3 id="5-4-运行时常量池"><a href="#5-4-运行时常量池" class="headerlink" title="5.4 运行时常量池"></a>5.4 运行时常量池</h3><ul>
+<li>常量池，就是一张表，虚拟机指令根据这张常量表找到要执行的类目、方法名、参数类型、字面量等信息</li>
+<li>运行时常量池，常量池是*.class 文件中的，当该类被加载，它的常量池信息就会放入运行时常量池，并把里面的符号地址变为真实地址</li>
+</ul>
+
                 
               </div>
             
@@ -394,12 +612,6 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2023/11/18/Java%E5%9F%BA%E7%A1%80/" title="Java基础">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java基础</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
