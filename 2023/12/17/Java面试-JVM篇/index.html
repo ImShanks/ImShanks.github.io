@@ -16,32 +16,31 @@
   <meta name="author" content="xwzhang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、Redis篇1.什么是缓存穿透缓存穿透是指用户查询一个不存在的数据，就是数据库和Redis中都不存在，解决方案的话主要都两个：  一是缓存空对象到redis 实现简单，可能会存在数据不一致的现象   二是用布隆过滤器   布隆过滤器的实现是基于bitmap（以bit位为单位的数组，每个数组是能存储0或1）：将数据的id三次hash，将bitmap中的改为1，这样三个数组就能确定一个数据是否存在">
+    <meta name="description" content="1.JVM是什么？答：JAVA Virtual Machine  Java程序的运行环境，好处：一次编写，到处运行，自动内存管理和垃圾回收机制  2.JVM由哪些部分组成，运行流程是什么？答：  3.什么是程序计数器？答：线程私有的，内部保存的字节码的行号。用于记录正在执行的字节码指令的地址。 javap -V xx.class 打印堆栈大小，局部变量的数量和方法的参数。  4.什么Java的堆？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA面试指南（Redis篇）">
-<meta property="og:url" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:title" content="Java面试-JVM篇">
+<meta property="og:url" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/index.html">
 <meta property="og:site_name" content="xwzhang&#39;s BLOG">
-<meta property="og:description" content="一、Redis篇1.什么是缓存穿透缓存穿透是指用户查询一个不存在的数据，就是数据库和Redis中都不存在，解决方案的话主要都两个：  一是缓存空对象到redis 实现简单，可能会存在数据不一致的现象   二是用布隆过滤器   布隆过滤器的实现是基于bitmap（以bit位为单位的数组，每个数组是能存储0或1）：将数据的id三次hash，将bitmap中的改为1，这样三个数组就能确定一个数据是否存在">
+<meta property="og:description" content="1.JVM是什么？答：JAVA Virtual Machine  Java程序的运行环境，好处：一次编写，到处运行，自动内存管理和垃圾回收机制  2.JVM由哪些部分组成，运行流程是什么？答：  3.什么是程序计数器？答：线程私有的，内部保存的字节码的行号。用于记录正在执行的字节码指令的地址。 javap -V xx.class 打印堆栈大小，局部变量的数量和方法的参数。  4.什么Java的堆？">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231216210822369.png">
-<meta property="og:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231216211816276.png">
-<meta property="og:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231216211938922.png">
-<meta property="og:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217161011633.png">
-<meta property="og:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217161210907.png">
-<meta property="og:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217160800296.png">
-<meta property="og:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217160815869.png">
-<meta property="og:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217161929106.png">
-<meta property="og:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217162137985.png">
-<meta property="article:published_time" content="2023-12-16T12:00:50.000Z">
-<meta property="article:modified_time" content="2023-12-17T08:31:41.150Z">
+<meta property="og:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217170913711.png">
+<meta property="og:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217171028980.png">
+<meta property="og:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217181838480.png">
+<meta property="og:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217182316042.png">
+<meta property="og:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217190155244.png">
+<meta property="og:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20240107215351237.png">
+<meta property="og:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20240107215409518.png">
+<meta property="og:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20240107221506870.png">
+<meta property="og:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20240107222247873.png">
+<meta property="article:published_time" content="2023-12-17T09:03:54.000Z">
+<meta property="article:modified_time" content="2024-01-08T13:36:15.475Z">
 <meta property="article:author" content="xwzhang">
-<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://zxwblog.top/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231216210822369.png">
+<meta name="twitter:image" content="http://zxwblog.top/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217170913711.png">
   
   
   
-  <title>JAVA面试指南（Redis篇） - xwzhang&#39;s BLOG</title>
+  <title>Java面试-JVM篇 - xwzhang&#39;s BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -236,7 +235,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JAVA面试指南（Redis篇）"></span>
+            <span id="subtitle" data-typed-text="Java面试-JVM篇"></span>
           
         </div>
 
@@ -247,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-16 20:00" pubdate>
-          2023年12月16日 晚上
+        <time datetime="2023-12-17 17:03" pubdate>
+          2023年12月17日 下午
         </time>
       </span>
     
@@ -307,99 +306,90 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JAVA面试指南（Redis篇）</h1>
+            <h1 id="seo-header">Java面试-JVM篇</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="一、Redis篇"><a href="#一、Redis篇" class="headerlink" title="一、Redis篇"></a>一、Redis篇</h1><h2 id="1-什么是缓存穿透"><a href="#1-什么是缓存穿透" class="headerlink" title="1.什么是缓存穿透"></a>1.什么是缓存穿透</h2><p><strong>缓存穿透</strong>是指用户查询一个不存在的数据，就是数据库和Redis中都不存在，解决方案的话主要都两个：</p>
-<ul>
-<li>一是缓存空对象到redis<ul>
-<li>实现简单，可能会存在数据不一致的现象</li>
-</ul>
-</li>
-<li>二是用布隆过滤器</li>
-</ul>
-<p><img src="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231216210822369.png" srcset="/img/loading.gif" lazyload alt="image-20231216210822369"></p>
-<p>布隆过滤器的实现是基于bitmap（以bit位为单位的数组，每个数组是能存储0或1）：将数据的id三次hash，将bitmap中的改为1，这样三个数组就能确定一个数据是否存在，这时让请求来了，会三次hash判断是否存在，这个过程可能会有误判的可能性，恰巧其他key三次hash的结果刚好是这个请求的结果，就会存在误判，确定存在后，就会去查redis，不存在就会去查数据库。</p>
-<h2 id="2-什么是缓存击穿"><a href="#2-什么是缓存击穿" class="headerlink" title="2.什么是缓存击穿"></a>2.什么是缓存击穿</h2><p><strong>缓存击穿</strong>是指给一个热点key设置了过期时间，当key过期的时候，恰好这个时候有对这个key的大量的并发请求，这些并发请求可能会导致数据库崩溃，解决方法有两个。</p>
-<ul>
-<li>一是使用互斥锁<ul>
-<li><img src="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231216211816276.png" srcset="/img/loading.gif" lazyload alt="image-20231216211816276"></li>
-</ul>
-</li>
-<li>二是利用逻辑过期</li>
-</ul>
-<p><img src="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231216211938922.png" srcset="/img/loading.gif" lazyload alt="image-20231216211938922"></p>
-<p>互斥锁，强一致性，性能差</p>
-<p>逻辑过期，高可用，性能优，不能保证数据的一致性</p>
-<h2 id="3-什么是缓存雪崩"><a href="#3-什么是缓存雪崩" class="headerlink" title="3.什么是缓存雪崩"></a>3.什么是缓存雪崩</h2><p><strong>缓存雪崩</strong>是指在同一时段大量的缓存key同时失效或者Redis服务宕机，导致大量请求到达数据库，带来巨大压力。</p>
-<p>解决方案：</p>
-<ul>
-<li>给不同的key的ttL添加随机值</li>
-<li>搭建redis集群提高服务的高可用</li>
-<li>给缓存业务添加降级限流策略</li>
-<li>给业务添加多级缓存</li>
-</ul>
-<h2 id="4-mysql的数据如何与redis进行同步？"><a href="#4-mysql的数据如何与redis进行同步？" class="headerlink" title="4.mysql的数据如何与redis进行同步？"></a>4.mysql的数据如何与redis进行同步？</h2><ul>
-<li>双写一致（对一致性要求比较高）<ul>
-<li>读操作：缓存命中，直接返回；缓存未命中查询数据库，写入缓存，设定超过时间</li>
-<li>写操作：延迟双删</li>
-<li><img src="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217161011633.png" srcset="/img/loading.gif" lazyload alt="image-20231217161011633"></li>
-</ul>
-</li>
-<li>双写一致（分布式锁）<ul>
-<li>用读写锁进行控制，<ul>
-<li>共享锁：读锁readLock，加锁之后，其他线程可以共享读操作</li>
-<li>排他锁：独占锁writeLock，加锁之后，阻塞其他线程的读写操作</li>
-<li><img src="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217161210907.png" srcset="/img/loading.gif" lazyload alt="image-20231217161210907"></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>异步通知保证数据的最终一致性</li>
-</ul>
-<p><img src="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217160800296.png" srcset="/img/loading.gif" lazyload alt="image-20231217160800296"></p>
-<p><img src="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217160815869.png" srcset="/img/loading.gif" lazyload alt="image-20231217160815869"></p>
-<h2 id="5-什么是redis的持久化"><a href="#5-什么是redis的持久化" class="headerlink" title="5.什么是redis的持久化"></a>5.什么是redis的持久化</h2><ol>
-<li><p>RDB全称Redis Database Backup file (Redis数据备份文件)，也被叫做Redis数据快照。简单来说就是把内存中的所有数据都记录到磁盘中。当Redis实例故障重启后，从磁盘读取快照文件，恢复数据。</p>
-<p>bgsave开始时会fork主进程得到子进程，子进程共享主进程的内存数据。完成fork后读取内存数据并写入 RDB 文件fork采用的是copy-on-write技术</p>
-<ul>
-<li>当主进程执行读操作时，访问共享内存</li>
-<li>当主进程执行写操作时，则会拷贝一份数据，执行写操作</li>
-</ul>
-<p><img src="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217161929106.png" srcset="/img/loading.gif" lazyload alt="image-20231217161929106"></p>
-</li>
-<li><p>AOF全称为Append Only File (追加文件)。Redis处理的每一个写命令都会记录在AOF文件，可以看做是命令日志文件。</p>
-</li>
-<li><p>AOF和RDB的对比</p>
-</li>
-</ol>
-<p><img src="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/image-20231217162137985.png" srcset="/img/loading.gif" lazyload alt="image-20231217162137985"></p>
-<h2 id="6-什么是redis的数据过期策略？"><a href="#6-什么是redis的数据过期策略？" class="headerlink" title="6.什么是redis的数据过期策略？"></a>6.什么是redis的数据过期策略？</h2><p>1.惰性删除:设置该key过期时间后，我们不去管它，当需要该key时，我们在检查其是否过期，如果过期，我们就删掉<br>它，反之返回该key。</p>
-<ul>
-<li>优点:对CPU友好，只会在使用该key时才会进行过期检查，对于很多用不到的key不用浪费时间进行过期检查</li>
-<li>缺点:对内存不友好，如果一个key已经过期，但是一直没有使用，那么该key就会一直存在内存中，内存永远不会释放</li>
-</ul>
-<p>2.定期删除:每隔一段时间，我们就对一些key进行检查，删除里面过期的key(从一定数量的数据库中取出一定数量的随<br>机key进行检查，并删除其中的过期key)。</p>
-<ul>
-<li>优点:可以通过限制删除操作执行的时长和频率来减少删除操作对 CPU 的影响。另外定期删除，也能有效释放过期键<br>占用的内存。</li>
-<li>缺点:难以确定删除操作执行的时长和频率</li>
-</ul>
-<h2 id="7-什么是redis的数据淘汰策略？"><a href="#7-什么是redis的数据淘汰策略？" class="headerlink" title="7.什么是redis的数据淘汰策略？"></a>7.什么是redis的数据淘汰策略？</h2><p>数据的淘汰策略: 当Redis中的内存不够用时，此时在向Redis中添加新的key，那么Redis就会按照某一种规则将内存<br>中的数据删除掉，这种数据的删除规则被称之为内存的淘汰策略。</p>
-<ul>
-<li>noeviction: 不淘汰任何key，但是内存满时不允许写入新数据，默认就是这种策略</li>
-<li>volatile-ttl: 对设置了TTL的key，比较key的剩余TTL值，TTL越小越先被淘汰</li>
-<li>allkeys-random:对全体key ，随机进行淘汰</li>
-<li>volatile-random:对设置了TTL的key ，随机进行淘汰</li>
-<li>allkeys-lru: 对全体key，基于LRU算法进行淘汰</li>
-<li>volatile-lru:对设置了TTL的key，基于LRU算法进行淘汰</li>
-<li>allkeys-lfu:对全体key，基于LFU算法进行淘汰</li>
-<li>volatile-lfu: 对设置了TTL的key，基于LFU算法进行淘汰</li>
-</ul>
-<p>LRU(Least Recently Used) 最近最少使用。用当前时间减去最后一次访问时间，这个值越大则淘汰优先级越高</p>
-<p>LFU(Least Frequently Used) 最少频率使用。会统计每个key的访问频率，值越小淘汰优先级越高</p>
+                <h2 id="1-JVM是什么？"><a href="#1-JVM是什么？" class="headerlink" title="1.JVM是什么？"></a>1.JVM是什么？</h2><p>答：JAVA Virtual Machine  Java程序的运行环境，好处：一次编写，到处运行，自动内存管理和垃圾回收机制</p>
+<p><img src="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217170913711.png" srcset="/img/loading.gif" lazyload alt="image-20231217170913711"></p>
+<h2 id="2-JVM由哪些部分组成，运行流程是什么？"><a href="#2-JVM由哪些部分组成，运行流程是什么？" class="headerlink" title="2.JVM由哪些部分组成，运行流程是什么？"></a>2.JVM由哪些部分组成，运行流程是什么？</h2><p>答：</p>
+<p><img src="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217171028980.png" srcset="/img/loading.gif" lazyload alt="image-20231217171028980"></p>
+<h2 id="3-什么是程序计数器？"><a href="#3-什么是程序计数器？" class="headerlink" title="3.什么是程序计数器？"></a>3.什么是程序计数器？</h2><p>答：线程私有的，内部保存的字节码的行号。用于记录正在执行的字节码指令的地址。</p>
+<figure><div class="code-wrapper"><pre class="line-numbers language-java" data-language="java"><code class="language-java">javap <span class="token operator">-</span><span class="token class-name">V</span> xx<span class="token punctuation">.</span><span class="token keyword">class</span>
+打印堆栈大小，局部变量的数量和方法的参数。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 
+<h2 id="4-什么Java的堆？"><a href="#4-什么Java的堆？" class="headerlink" title="4.什么Java的堆？"></a>4.什么Java的堆？</h2><p>答：堆是线程共享的区域：主要用来保存对象实例，数组等。</p>
+<p><img src="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217181838480.png" srcset="/img/loading.gif" lazyload alt="image-20231217181838480"></p>
+<ul>
+<li><p>年轻代被划分为三部分，Eden区和两个大小严格相同的Survivor区根据JVM的策略，在经过几次垃圾收集后，任然存活于Survivor的对象将被移动到老年代区间</p>
+</li>
+<li><p>老年代主要保存生命周期长的对象，一般是一些老的对象</p>
+</li>
+</ul>
+<p><img src="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217182316042.png" srcset="/img/loading.gif" lazyload alt="image-20231217182316042"></p>
+<ul>
+<li>1.7中有有一个永久代，存储的是类信息、静态变量、常量、编译后的代码</li>
+<li>1.8移除了永久代，把数据存储到了本地内存的元空间中，防止内存溢出</li>
+</ul>
+<h2 id="5-什么是虚拟机栈？"><a href="#5-什么是虚拟机栈？" class="headerlink" title="5.什么是虚拟机栈？"></a>5.什么是虚拟机栈？</h2><p>Java Virtual machine Stacks (java 虚拟机栈)</p>
+<ul>
+<li>每个线程运行时所需要的内存，称为虚拟机栈，先进后出</li>
+<li>每个栈由多个栈帧 (frame)组成，对应着每次方法调用时所占用的内存</li>
+<li>每个线程只能有一个活动栈帧，对应着当前正在执行的那个方法</li>
+</ul>
+<h3 id="5-1-垃圾回收是否涉及栈内存？"><a href="#5-1-垃圾回收是否涉及栈内存？" class="headerlink" title="5.1 垃圾回收是否涉及栈内存？"></a>5.1 垃圾回收是否涉及栈内存？</h3><p>答：垃圾回收主要指的就是堆内存，栈内存的话，当栈帧弹栈之后，内存就会释放，所以栈内存不需要垃圾回收</p>
+<h3 id="5-2-栈内存分配越大越好吗？"><a href="#5-2-栈内存分配越大越好吗？" class="headerlink" title="5.2 栈内存分配越大越好吗？"></a>5.2 栈内存分配越大越好吗？</h3><p>答：栈帧过大会导致线程数变少，例如，机器总内存为512m，目前能活动的线程数则为512个，如果把栈内存改为2048k，那么能活动的栈帧就会减半</p>
+<h3 id="5-3-方法内的局部变量是否线程安全？"><a href="#5-3-方法内的局部变量是否线程安全？" class="headerlink" title="5.3 方法内的局部变量是否线程安全？"></a>5.3 方法内的局部变量是否线程安全？</h3><ul>
+<li>答：如果方法内局部变量没有逃离方法的作用范围，它是线程安全的</li>
+<li>如果是局部变量引用了对象，并逃离方法的作用范围，需要考虑线程安全</li>
+</ul>
+<h3 id="5-4-什么时候会发生栈内存溢出情况？"><a href="#5-4-什么时候会发生栈内存溢出情况？" class="headerlink" title="5.4 什么时候会发生栈内存溢出情况？"></a>5.4 什么时候会发生栈内存溢出情况？</h3><ul>
+<li>栈帧过多导致栈内存溢出，典型问题:递归调用</li>
+<li>栈帧过大导致栈内存溢出</li>
+</ul>
+<h2 id="6-堆栈的区别是什么？"><a href="#6-堆栈的区别是什么？" class="headerlink" title="6.堆栈的区别是什么？"></a>6.堆栈的区别是什么？</h2><ul>
+<li>栈内存一般会用来存储局部变量和方法调用，但堆内存是用来存储Java对象和数组的的。堆会GC垃圾回收，而栈不会</li>
+<li>栈内存是线程私有的，而堆内存是线程共有的</li>
+<li>两者异常错误不同，但如果栈内存或者堆内存不足都会抛出异常<ul>
+<li>栈空间不足: java.lang.StackOverFlowError。</li>
+<li>堆空间不足:javalang.OutOfMemoryError。</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-什么是方法区？"><a href="#7-什么是方法区？" class="headerlink" title="7.什么是方法区？"></a>7.什么是方法区？</h2><ul>
+<li>方法区(Method Area)是各个线程共享的内存区域</li>
+<li>主要存储类的信息、运行时常量池</li>
+<li>虚拟机启动的时候创建，关闭虚拟机时释放</li>
+<li>如果方法区域中的内存无法满足分配请求，则会抛出OutOfMemoryError: Metaspace</li>
+</ul>
+<h2 id="8-什么是常量池？"><a href="#8-什么是常量池？" class="headerlink" title="8.什么是常量池？"></a>8.什么是常量池？</h2><p>可以看作是一张表，虚拟机指令根据这张常量表找到要执行的类名、方法名、参数类型、字面量等信息</p>
+<p>运行时常量池：常量池是*class 文件中的，当该类被加载，它的常量池信息就会放入运行时常量池，并把里面的符号地址变为真实地址</p>
+<p><img src="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20231217190155244.png" srcset="/img/loading.gif" lazyload alt="image-20231217190155244"></p>
+<h2 id="9-什么是直接内存？"><a href="#9-什么是直接内存？" class="headerlink" title="9.什么是直接内存？"></a>9.什么是直接内存？</h2><p>直接内存:并不属于JVM中的内存结构，不由JVM进行管理。是虚拟机的系统内存，常见于 NIO 操作时，用于数据缓冲区，它分配回收成本较高，但读写性能高。</p>
+<p>IO的数据拷贝流程</p>
+<p><img src="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20240107215351237.png" srcset="/img/loading.gif" lazyload alt="image-20240107215351237"></p>
+<p>NIO的数据拷贝流程</p>
+<p><img src="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20240107215409518.png" srcset="/img/loading.gif" lazyload alt="image-20240107215409518"></p>
+<ul>
+<li>并不属于JVM中的内存结构，不由JVM进行管理。是虚拟机的系统内存</li>
+<li>常见于 NIO操作时，用于数据缓冲区，分配回收成本较高，但读写性能高，不受JVM内存回收管理</li>
+</ul>
+<h2 id="10-什么是类加载器，类加载器有哪些？"><a href="#10-什么是类加载器，类加载器有哪些？" class="headerlink" title="10.什么是类加载器，类加载器有哪些？"></a>10.什么是类加载器，类加载器有哪些？</h2><p>10.1 <strong>类加载器</strong>：JVM只会运行二进制文件，类加载器的作用就是将字节码文件加载到JVM中，从而让Java程序能够启动起来。</p>
+<p><img src="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20240107221506870.png" srcset="/img/loading.gif" lazyload alt="image-20240107221506870"></p>
+<p>10.2  <strong>类加载器有哪些</strong></p>
+<p>启动类加载器(BootStrap ClassLoader):加载JAVA HOME&#x2F;jre&#x2F;lib目录下的库</p>
+<p>扩展类加载器(ExtClassLoader):主要加载JAVA_HOME&#x2F;jre&#x2F;lib&#x2F;ext目录中的类</p>
+<p>应用类加载器(AppClassLoader):用于加载classPath下的类</p>
+<p>自定义类加载器(CustomizeClassLoader):自定义类继承ClassLoader，实现自定义类加载规则</p>
+<h2 id="11-什么是双亲委派原则"><a href="#11-什么是双亲委派原则" class="headerlink" title="11.什么是双亲委派原则"></a>11.什么是双亲委派原则</h2><p><strong>1.什么是双亲委派模型?</strong><br>加载某一个类，先委托上一级的加载器进行加载，如果上级加载器也有上级，则会继续向上委托，如果该类委托上级没有被加载，子加载器尝试加载该类.。</p>
+<p><strong>2.为什么要用双亲委派机制？</strong></p>
+<ul>
+<li>通过双亲委派机制可以避免某一个类被重复加载，当父类已经加载后则无需重复加载，保证唯一性。</li>
+<li>为了安全，保证类库API不会被修改</li>
+</ul>
+<p><img src="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/image-20240107222247873.png" srcset="/img/loading.gif" lazyload alt="image-20240107222247873"></p>
+<h2 id="12-说一下类装载的执行过程"><a href="#12-说一下类装载的执行过程" class="headerlink" title="12.说一下类装载的执行过程"></a>12.说一下类装载的执行过程</h2>
                 
               </div>
             
@@ -407,34 +397,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/" class="category-chain-item">面试指南</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Redis/" class="print-no-link">#Redis</a>
-      
-    </div>
   
 </div>
 
@@ -444,8 +406,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JAVA面试指南（Redis篇）</div>
-      <div>http://zxwblog.top/2023/12/16/JAVA面试指南/</div>
+      <div>Java面试-JVM篇</div>
+      <div>http://zxwblog.top/2023/12/17/Java面试-JVM篇/</div>
     </div>
     <div class="license-meta">
       
@@ -457,7 +419,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月16日</div>
+          <div>2023年12月17日</div>
         </div>
       
       
@@ -489,9 +451,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/17/Java%E9%9D%A2%E8%AF%95-JVM%E7%AF%87/" title="Java面试-JVM篇">
+                      <a href="/2024/01/21/JAVA%E9%9D%A2%E8%AF%95-%E6%A1%86%E6%9E%B6%E7%AF%87/" title="JAVA面试-框架篇">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Java面试-JVM篇</span>
+                        <span class="hidden-mobile">JAVA面试-框架篇</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -499,8 +461,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/13/Java%E8%BF%9B%E9%98%B6-%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="Java进阶-多线程">
-                        <span class="hidden-mobile">Java进阶-多线程</span>
+                      <a href="/2023/12/16/JAVA%E9%9D%A2%E8%AF%95%E6%8C%87%E5%8D%97/" title="JAVA面试指南（Redis篇）">
+                        <span class="hidden-mobile">JAVA面试指南（Redis篇）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
