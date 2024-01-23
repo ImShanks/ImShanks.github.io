@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>JAVA面试-并发篇</title>
+    <link href="/2024/01/22/JAVA%E9%9D%A2%E8%AF%95-%E5%B9%B6%E5%8F%91%E7%AF%87/"/>
+    <url>/2024/01/22/JAVA%E9%9D%A2%E8%AF%95-%E5%B9%B6%E5%8F%91%E7%AF%87/</url>
+    
+    <content type="html"><![CDATA[<h3 id="一、线程和进程的区别"><a href="#一、线程和进程的区别" class="headerlink" title="一、线程和进程的区别?"></a>一、线程和进程的区别?</h3><ul><li>进程是正在运行程序的实例，进程中包含了线程，每个线程执行不同的任务</li><li>不同的进程使用不同的内存空间，在当前进程下的所有线程可以共享内存空间</li><li>线程更轻量，线程上下文切换成本一般上要比进程上下文切换低(上下文切换指的是从一个线程切换到另一个线程)</li></ul><p>线程是CPU调度的最小执行单位，进程是CPU分配资源的最小单位。</p><h3 id="二、并行和并发的区别？"><a href="#二、并行和并发的区别？" class="headerlink" title="二、并行和并发的区别？"></a>二、并行和并发的区别？</h3><p>并发：多个线程轮流使用cpu的过程叫做并发</p><p>并行：多个Cpu同时执行多个线程，叫做并行</p><h3 id="三、创建线程的方式有哪些？"><a href="#三、创建线程的方式有哪些？" class="headerlink" title="三、创建线程的方式有哪些？"></a>三、创建线程的方式有哪些？</h3><ul><li>继承Thread类</li><li>实现Runnable接口</li><li>实现Callable接口</li><li>使用线程池创建线程</li></ul><p><img src="/2024/01/22/JAVA%E9%9D%A2%E8%AF%95-%E5%B9%B6%E5%8F%91%E7%AF%87/image-20240122215145575.png" alt="image-20240122215145575"></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JAVA面试-框架篇</title>
     <link href="/2024/01/21/JAVA%E9%9D%A2%E8%AF%95-%E6%A1%86%E6%9E%B6%E7%AF%87/"/>
     <url>/2024/01/21/JAVA%E9%9D%A2%E8%AF%95-%E6%A1%86%E6%9E%B6%E7%AF%87/</url>
